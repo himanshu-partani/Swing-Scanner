@@ -1,21 +1,49 @@
 # Swing Scanner Roadmap
 
-## Version 1
+## Version 1.1 ✅ (Completed)
 
 - [x] Live Data
-- [x] Moving Averages
-- [ ] 3 Month High
-- [ ] Volume Breakout
-- [ ] Resistance
-- [ ] 52 Week High
+- [x] 20-Day Moving Average
+- [x] 50-Day Moving Average
+- [x] Previous 3-Month High Breakout
+- [x] Volume Breakout
+- [x] Relative Strength (RS)
+- [x] Relative Strength Index (RSI)
+- [x] Score System
+- [x] Signal Report
+
+---
+
+## Version 1.2 (Next)
+
+- [ ] ATR (Average True Range)
+- [ ] Stop Loss Calculation
+- [ ] Target Calculation
+- [ ] Risk Reward Ratio
+
+---
 
 ## Version 2
 
-- [ ] RSI
-- [ ] MACD
-- [ ] ATR
+- [ ] Support Levels
+- [ ] Resistance Levels
+- [ ] 52 Week High
+- [ ] Stock Ranking
+- [ ] Automatic CSV Reports
+- [ ] Nifty 500 Scanner
+
+---
 
 ## Version 3
 
-- [ ] AI Scanner
+- [ ] Streamlit Dashboard
+- [ ] Interactive Charts
+- [ ] Telegram Alerts
+
+---
+
+## Version 4
+
+- [ ] AI Swing Scanner
 - [ ] Portfolio Analysis
+- [ ] Automatic Watchlist
