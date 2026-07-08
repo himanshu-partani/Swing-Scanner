@@ -1,34 +1,32 @@
-# 📈 Swing Scanner
+# Swing Scanner
 
-A Python-based Swing Trading Stock Scanner built while learning Python from scratch.
+A Python-based Swing Trading Scanner built while learning Python from scratch.
 
-This project analyzes NSE stocks using technical indicators and generates swing trading signals based on trend, momentum, and volume.
-
-Current Version: **v1.1**
+This project analyzes NSE stocks using technical indicators and generates trading signals for swing trading opportunities.
 
 ---
 
 ## Features
 
-### Market Data
-- Download live NSE market data using Yahoo Finance
-- Scan multiple stocks automatically
-
-### Technical Indicators
+- Live Yahoo Finance Data
+- Multi Stock Scanner
 - 20-Day Moving Average (MA20)
 - 50-Day Moving Average (MA50)
-- Relative Strength (RS)
-- Relative Strength Index (RSI)
-
-### Scanner Features
-- Previous 3-Month High Breakout
+- Previous 3-Month High
 - Volume Breakout Detection
-- Swing Score (5 Point System)
-- Buy/Swing Signal Report
+- RSI Indicator
+- ATR Indicator
+- Stop Loss Calculation
+- Target Calculation
+- Risk Calculation
+- Reward Calculation
+- Reward : Risk Ratio
+- Professional Console Output
+- Modular Indicator Functions
 
 ---
 
-## Technologies Used
+## Technologies
 
 - Python
 - Pandas
@@ -41,65 +39,32 @@ Current Version: **v1.1**
 
 ## Project Structure
 
+```text
 Swing-Scanner/
-
+│
 ├── data/
-
 ├── docs/
-
 ├── reports/
-
+├── indicators.py
 ├── scanner.py
-
 ├── stockanalysis.py
-
 ├── live_data.py
-
+├── README.md
 ├── requirements.txt
-
-└── README.md
+└── .gitignore
+```
 
 ---
 
-## Roadmap
+## Future Plans
 
-### Version 1.2
-- ATR
-- Stop Loss
-- Target
-- Risk Reward Ratio
-
-### Version 2
-- Support & Resistance
-- Stock Ranking
-- Nifty 500 Scanner
+- Read Stocks from CSV
+- Scan Nifty 500
 - Automatic CSV Reports
-
-### Version 3
+- Ranking System
+- Support & Resistance
+- Relative Strength
 - Streamlit Dashboard
-- Interactive Charts
+- Charts
 - Telegram Alerts
-
-### Version 4
-- AI Stock Explanations
-- Portfolio Analysis
-- Automatic Watchlist
-
----
-
-## Learning Goal
-
-This project is not only about building a stock scanner.
-
-It is also my journey of learning:
-
-- Python
-- Pandas
-- Git & GitHub
-- Data Analysis
-- Technical Analysis
-- Software Development
-
-Every feature is implemented step by step while understanding the logic behind it instead of copying code.
-
----
+- AI Swing Scanner

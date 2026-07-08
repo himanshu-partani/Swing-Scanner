@@ -1,4 +1,5 @@
 import yfinance as yf
+from indicators import calculate_rsi,calculate_atr
 VOLUME_MULTIPLIER = 1.2
 stocks = [ "TCS.NS","INFY.NS","RELIANCE.NS","SBIN.NS","HDFCBANK.NS","AEGISLOG.NS"]
 for stock in stocks:
@@ -9,13 +10,8 @@ for stock in stocks:
     data["ma20"] = data["Close"].rolling(20).mean()
     data["ma50"] = data["Close"].rolling(50).mean()
     data["vol20"] = data["Volume"].rolling(20).mean()
-    data["delta"] = data["Close"].diff()
-    data["gain"] = data["delta"].clip(lower=0)
-    data["loss"] = -data["delta"].clip(upper=0)
-    data["avg_gain"] = data["gain"].rolling(14).mean()
-    data["avg_loss"] = data["loss"].rolling(14).mean()
-    data["rs"] = data["avg_gain"] / data["avg_loss"]
-    data["rsi"] = 100 - (100 / (1 + data["rs"]))
+    data = calculate_rsi(data)
+    data = calculate_atr(data)
     latest = data.iloc[-1]
     avg_volume = latest["vol20"]
     today_volume = latest["Volume"]
@@ -51,14 +47,21 @@ for stock in stocks:
     print("=" * 50)
     print(f"{'Score':20}: {score}/5")
     print(f"{'Close':20}: {latest['Close']:.2f}")
-    print(f"{'ma20':20}: {latest['ma20']:.2f}")
-    print(f"{'ma50':20}: {latest['ma50']:.2f}")
+    print(f"{'MA20':20}: {latest['ma20']:.2f}")
+    print(f"{'MA50':20}: {latest['ma50']:.2f}")
     print(f"{'RSI':20}: {latest['rsi']:.2f}")
+    print(f"{'ATR':20}: {latest['atr']:.2f}")
+    print("-" * 45)
+    print(f"{'Stop Loss':20}: {latest['stoploss']:.2f}")
+    print(f"{'Target':20}: {latest['target']:.2f}")
+    print(f"{'Risk':20}: {latest['risk']:.2f}")
+    print(f"{'Reward':20}: {latest['reward']:.2f}")
+    print(f"{'Reward : Risk':20}: {latest['rr']:.2f}")
     print(f"{'Previous High':20}: {previous_high:.2f}")
     print(f"{'Todays Volume':20}: {today_volume:,.0f}")
     print(f"{'20D Avg Volume':20}: {avg_volume:,.0f}")
     print("-" * 45)
-    print("\nSignals:")
+    print("\nTrading Signals:")
 
     for signal in signals:
         print(signal)

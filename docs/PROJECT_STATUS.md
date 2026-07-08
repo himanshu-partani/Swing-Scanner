@@ -1,62 +1,59 @@
 # Swing Scanner Progress
 
-## Current Version
+## Version 1.2
 
-### Version 1.1 ✅
+### Completed
 
----
-
-## Completed Features
-
-### Python & Data Handling
 - CSV Reading using Pandas
 - DataFrame Filtering
 - Sorting Data
 - Export CSV
 - Live Yahoo Finance Data
-- Git & GitHub Setup
-
-### Technical Indicators
+- Multi Stock Scanner
 - 20-Day Moving Average (MA20)
 - 50-Day Moving Average (MA50)
-- Relative Strength (RS)
-- Relative Strength Index (RSI)
-
-### Scanner Features
-- Single Stock Analysis
-- Multi Stock Scanner
-- Previous 3-Month High Breakout
+- Previous 3-Month High
 - Volume Breakout
-- Stock Score (5 Points)
-- Buy/Swing Signal Report
+- RSI Indicator
+- ATR Indicator
+- Stop Loss Calculation
+- Target Calculation
+- Risk Calculation
+- Reward Calculation
+- Reward : Risk Ratio
+- Professional Console Output
+- Signal Generation
+- Modular Project Structure
+- Custom Indicators Module
+- Git & GitHub Setup
 
 ---
 
-## Next Features (Version 1.2)
+## Next Features
 
-- ATR (Average True Range)
-- Stop Loss Calculation
-- Target Calculation
-- Risk Reward Ratio
+- Read Stocks from CSV
+- Ranking by Score
+- Automatic CSV Report
+- Resistance Levels
+- Support Levels
+- 52 Week High
+- Relative Strength
 
 ---
 
 ## Future Versions
 
 ### Version 2
-- Support Levels
-- Resistance Levels
-- 52 Week High
-- Nifty 500 Scanner
-- Automatic CSV Reports
-- Stock Ranking
+
+- Streamlit Dashboard
+- Charts
+- Portfolio Scanner
+- Watchlist
+- Better Report Generation
 
 ### Version 3
-- Streamlit Dashboard
-- Interactive Charts
-- Telegram Alerts
 
-### Version 4
 - AI Swing Scanner
+- Telegram Alerts
 - Portfolio Analyzer
-- Automatic Watchlist
+- AI Trade Explanations

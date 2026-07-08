@@ -7,10 +7,9 @@
 - If Else
 - Lists
 - Functions
-- f-Strings
-- Project Structure
-
----
+- Modules
+- Import Statements
+- Returning Values
 
 ## Pandas
 
@@ -19,35 +18,31 @@
 - Filtering
 - Sorting
 - Rolling Mean
-- diff()
+- shift()
 - clip()
-- Data Pipelines
-
----
+- abs()
+- axis=1
+- Multiple Column Selection
 
 ## Finance
 
 - OHLC Data
 - Moving Averages
+- Previous High
 - Volume Breakout
-- Previous High Breakout
-- Relative Strength (RS)
-- Relative Strength Index (RSI)
+- RSI
+- ATR
+- Stop Loss
+- Target
+- Risk & Reward
+- Reward : Risk Ratio
 
----
+## Software Development
 
-## Programming Concepts
-
-- Signals using Lists
-- Score-based Scanner
-- Step-by-step Indicator Building
-- Debugging DataFrames
-- Reading Intermediate Results
-
----
-
-## Developer Tools
-
-- VS Code
+- Project Structure
+- Refactoring
+- Modular Programming
+- Debugging
 - Git
 - GitHub
+- VS Code
