@@ -1,40 +1,50 @@
 # Swing Scanner Roadmap
 
-## Version 1.2 ✅
+## Version 2.0 ✅
 
-- [x] Live Data
-- [x] Moving Averages
-- [x] Previous 3-Month High
-- [x] Volume Breakout
-- [x] RSI
-- [x] ATR
-- [x] Stop Loss
-- [x] Target
-- [x] Risk
-- [x] Reward
-- [x] Reward : Risk
+- [x] Live Yahoo Finance Data
+- [x] Multi Stock Scanner
+- [x] CSV Watchlist Support
+- [x] Error Handling
+- [x] 20-Day Moving Average (MA20)
+- [x] 50-Day Moving Average (MA50)
+- [x] Previous 3-Month High Breakout
+- [x] Volume Breakout Detection
+- [x] RSI (Relative Strength Index)
+- [x] ATR (Average True Range)
+- [x] MACD (Moving Average Convergence Divergence)
+- [x] Signal Line
+- [x] Histogram
+- [x] Stop Loss Calculation
+- [x] Target Calculation
+- [x] Risk Calculation
+- [x] Reward Calculation
+- [x] Reward : Risk Ratio
+- [x] 6-Point Swing Scoring System
 - [x] Modular Indicators
+- [x] Professional Console Output
 
 ---
 
-## Version 2
+## Version 2.x
 
-- [ ] Read Stocks from CSV
-- [ ] Scan Nifty 500
+- [ ] Relative Strength vs Nifty
+- [ ] 52-Week High Detection
+- [ ] Relative Volume
+- [ ] Consolidation Detection
 - [ ] Ranking by Score
-- [ ] Automatic CSV Report
+- [ ] Automatic CSV Report Generation
+- [ ] Nifty 500 Scanner
 - [ ] Better Output Formatting
-- [ ] Support Levels
-- [ ] Resistance Levels
-- [ ] Relative Strength
-- [ ] 52 Week High
+- [ ] Multiple Watchlists
 
 ---
 
 ## Version 3
 
 - [ ] Streamlit Dashboard
-- [ ] Charts
+- [ ] Interactive Charts
 - [ ] Portfolio Analysis
 - [ ] Telegram Alerts
 - [ ] AI Swing Scanner
+- [ ] AI Trade Explanations

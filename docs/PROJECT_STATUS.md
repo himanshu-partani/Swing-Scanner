@@ -1,55 +1,57 @@
 # Swing Scanner Progress
 
-## Version 1.2
+## Version 2.0
 
 ### Completed
 
-- CSV Reading using Pandas
-- DataFrame Filtering
-- Sorting Data
-- Export CSV
+- CSV Watchlist Support
+- Error Handling for Invalid Tickers
 - Live Yahoo Finance Data
 - Multi Stock Scanner
 - 20-Day Moving Average (MA20)
 - 50-Day Moving Average (MA50)
-- Previous 3-Month High
-- Volume Breakout
-- RSI Indicator
-- ATR Indicator
+- Previous 3-Month High Breakout
+- Volume Breakout Detection
+- RSI (Relative Strength Index)
+- ATR (Average True Range)
+- MACD (Moving Average Convergence Divergence)
+- Signal Line
+- Histogram
 - Stop Loss Calculation
 - Target Calculation
 - Risk Calculation
 - Reward Calculation
 - Reward : Risk Ratio
 - Professional Console Output
-- Signal Generation
+- Trading Signal Generation
+- 6-Point Swing Scoring System
 - Modular Project Structure
 - Custom Indicators Module
-- Git & GitHub Setup
+- CSV Watchlist Reading
+- Git & GitHub Version Control
 
 ---
 
 ## Next Features
 
-- Read Stocks from CSV
+- Relative Strength vs Nifty
+- 52-Week High Detection
+- Relative Volume
+- Consolidation Detection
 - Ranking by Score
-- Automatic CSV Report
-- Resistance Levels
-- Support Levels
-- 52 Week High
-- Relative Strength
+- Automatic CSV Report Generation
 
 ---
 
 ## Future Versions
 
-### Version 2
+### Version 2.x
 
+- Nifty 500 Scanner
+- Multiple Watchlists
+- Better Report Generation
 - Streamlit Dashboard
 - Charts
-- Portfolio Scanner
-- Watchlist
-- Better Report Generation
 
 ### Version 3
 

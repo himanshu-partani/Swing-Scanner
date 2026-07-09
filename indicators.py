@@ -8,6 +8,7 @@ def calculate_rsi(data):
     data["rs"] = data["avg_gain"] / data["avg_loss"]
     data["rsi"] = 100 - (100 / (1 + data["rs"]))
     return data
+
 def calculate_atr(data):
     data["previous_close"] = data["Close"].shift(1)
     data["high_low"] = data["High"] - data["Low"]
@@ -20,4 +21,13 @@ def calculate_atr(data):
     data["risk"] = data["Close"] - data["stoploss"]
     data["reward"] = data["target"] - data["Close"]
     data["rr"] = data["reward"] / data["risk"]
+    return data
+
+def calculate_macd(data):
+
+    ema12 = data["Close"].ewm(span=12, adjust=False).mean()
+    ema26 = data["Close"].ewm(span=26, adjust=False).mean()
+    data["macd"] = ema12 - ema26
+    data["signal"] = data["macd"].ewm(span=9, adjust=False).mean()
+    data["histogram"] = data["macd"] - data["signal"]
     return data

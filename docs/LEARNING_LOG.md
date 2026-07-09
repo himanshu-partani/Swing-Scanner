@@ -10,6 +10,10 @@
 - Modules
 - Import Statements
 - Returning Values
+- Try & Except
+- Exception Handling
+- Temporary Variables
+- Modular Function Design
 
 ## Pandas
 
@@ -23,6 +27,8 @@
 - abs()
 - axis=1
 - Multiple Column Selection
+- ewm()
+- Exponential Moving Average (EMA)
 
 ## Finance
 
@@ -30,8 +36,13 @@
 - Moving Averages
 - Previous High
 - Volume Breakout
-- RSI
-- ATR
+- RSI (Relative Strength Index)
+- ATR (Average True Range)
+- MACD (Moving Average Convergence Divergence)
+- Signal Line
+- Histogram
+- EMA vs SMA
+- Bullish & Bearish Momentum
 - Stop Loss
 - Target
 - Risk & Reward
@@ -43,6 +54,8 @@
 - Refactoring
 - Modular Programming
 - Debugging
+- Error Handling
+- CSV Watchlists
 - Git
 - GitHub
 - VS Code

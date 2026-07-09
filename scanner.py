@@ -1,7 +1,7 @@
 import pandas as pd
 import yfinance as yf
 
-from indicators import calculate_rsi,calculate_atr
+from indicators import calculate_rsi,calculate_atr,calculate_macd
 VOLUME_MULTIPLIER = 1.2
 watchlist = pd.read_csv("data/stocks.csv")
 stocks = watchlist["Ticker"]
@@ -19,6 +19,7 @@ for stock in stocks:
         data["vol20"] = data["Volume"].rolling(20).mean()
         data = calculate_rsi(data)
         data = calculate_atr(data)
+        data = calculate_macd(data)
         latest = data.iloc[-1]
         avg_volume = latest["vol20"]
         today_volume = latest["Volume"]
@@ -49,15 +50,23 @@ for stock in stocks:
             signals.append("✅ Healthy RSI")
         else:
             signals.append("❌ RSI not in swing range")
+        if latest["macd"] > latest["signal"]:
+            score += 1
+            signals.append("✅ Bullish MACD")
+        else:
+            signals.append("❌ Bearish MACD")
         print("=" * 50)
         print(f"{stock:^50}")
         print("=" * 50)
-        print(f"{'Score':20}: {score}/5")
+        print(f"{'Score':20}: {score}/6")
         print(f"{'Close':20}: {latest['Close']:.2f}")
         print(f"{'MA20':20}: {latest['ma20']:.2f}")
         print(f"{'MA50':20}: {latest['ma50']:.2f}")
         print(f"{'RSI':20}: {latest['rsi']:.2f}")
         print(f"{'ATR':20}: {latest['atr']:.2f}")
+        print(f"{'MACD':20}: {latest['macd']:.2f}")
+        print(f"{'Signal':20}: {latest['signal']:.2f}")
+        print(f"{'Histogram':20}: {latest['histogram']:.2f}")
         print("-" * 45)
         print(f"{'Stop Loss':20}: {latest['stoploss']:.2f}")
         print(f"{'Target':20}: {latest['target']:.2f}")
@@ -72,7 +81,8 @@ for stock in stocks:
 
         for signal in signals:
             print(signal)
-    except Exception:
+
+    except Exception as e:
+        print(e)
         print(f"⚠️ Could not scan {stock}. Skipping...")
         continue
-        
