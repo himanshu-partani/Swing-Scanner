@@ -1,13 +1,11 @@
 import pandas as pd
 
-stocks = pd.read_csv("data/stocks.csv")
+data = pd.read_csv("data/stocks.csv")
 
-min_price = int(input("Enter minimum price: "))
-min_score = int(input("Enter minimum score: "))
+print(data)
+print(data["Ticker"])
+print(type(data))
+print(type(data["Ticker"]))
 
-buy = stocks[
-    (stocks["Price"] > min_price) &
-    (stocks["Score"] > min_score)
-]
-
-print(buy)
+for stock in data["Ticker"]:
+    print(stock)
