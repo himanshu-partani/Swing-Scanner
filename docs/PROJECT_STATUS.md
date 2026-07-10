@@ -1,61 +1,86 @@
-# Swing Scanner Progress
+# Project Status
 
-## Version 2.0
+## Current Version
 
-### Completed
+Version 2.1
 
-- CSV Watchlist Support
-- Error Handling for Invalid Tickers
+Status:
+
+Completed
+
+---
+
+## Completed Features
+
+### Core
+
+- CSV Watchlist
 - Live Yahoo Finance Data
-- Multi Stock Scanner
-- 20-Day Moving Average (MA20)
-- 50-Day Moving Average (MA50)
-- Previous 3-Month High Breakout
-- Volume Breakout Detection
-- RSI (Relative Strength Index)
-- ATR (Average True Range)
-- MACD (Moving Average Convergence Divergence)
+- Error Handling
+
+### Indicators
+
+- MA20
+- MA50
+- RSI
+- ATR
+- MACD
 - Signal Line
 - Histogram
-- Stop Loss Calculation
-- Target Calculation
-- Risk Calculation
-- Reward Calculation
-- Reward : Risk Ratio
-- Professional Console Output
-- Trading Signal Generation
-- 6-Point Swing Scoring System
-- Modular Project Structure
-- Custom Indicators Module
-- CSV Watchlist Reading
-- Git & GitHub Version Control
-
----
-
-## Next Features
-
 - Relative Strength vs Nifty
-- 52-Week High Detection
-- Relative Volume
-- Consolidation Detection
-- Ranking by Score
-- Automatic CSV Report Generation
+
+### Breakout Detection
+
+- Previous 3-Month High
+- Volume Breakout
+
+### Trade Planning
+
+- Stop Loss
+- Target
+- Risk
+- Reward
+- Reward : Risk Ratio
+
+### Scanner
+
+- Professional Console Output
+- Trading Signals
+- 7-Point Swing Score
+
+### Architecture
+
+- Modular indicator functions
+- indicators.py
+- scanner.py
+- Efficient Nifty download
 
 ---
 
-## Future Versions
+## Current Output
 
-### Version 2.x
+Scanner now displays:
 
-- Nifty 500 Scanner
-- Multiple Watchlists
-- Better Report Generation
-- Streamlit Dashboard
-- Charts
+- Score
+- Price
+- Moving Averages
+- RSI
+- ATR
+- MACD
+- Signal
+- Histogram
+- Relative Strength vs Nifty
+- Stop Loss
+- Target
+- Risk
+- Reward
+- Reward : Risk
+- Previous High
+- Volume Information
+- Trading Signals
 
-### Version 3
+---
 
-- AI Swing Scanner
-- Telegram Alerts
-- Portfolio Analyzer
-- AI Trade Explanations
+Next Version:
+
+Version 2.2

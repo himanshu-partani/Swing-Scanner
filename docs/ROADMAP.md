@@ -1,50 +1,91 @@
 # Swing Scanner Roadmap
 
-## Version 2.0 ✅
+---
 
-- [x] Live Yahoo Finance Data
-- [x] Multi Stock Scanner
-- [x] CSV Watchlist Support
-- [x] Error Handling
-- [x] 20-Day Moving Average (MA20)
-- [x] 50-Day Moving Average (MA50)
-- [x] Previous 3-Month High Breakout
-- [x] Volume Breakout Detection
-- [x] RSI (Relative Strength Index)
-- [x] ATR (Average True Range)
-- [x] MACD (Moving Average Convergence Divergence)
-- [x] Signal Line
-- [x] Histogram
-- [x] Stop Loss Calculation
-- [x] Target Calculation
-- [x] Risk Calculation
-- [x] Reward Calculation
-- [x] Reward : Risk Ratio
-- [x] 6-Point Swing Scoring System
-- [x] Modular Indicators
-- [x] Professional Console Output
+# Version 1
+
+Completed
+
+- CSV Watchlist
+- Live Yahoo Finance Data
+- MA20
+- MA50
+- Previous High Breakout
+- Volume Breakout
 
 ---
 
-## Version 2.x
+# Version 2.0
 
-- [ ] Relative Strength vs Nifty
-- [ ] 52-Week High Detection
-- [ ] Relative Volume
-- [ ] Consolidation Detection
-- [ ] Ranking by Score
-- [ ] Automatic CSV Report Generation
-- [ ] Nifty 500 Scanner
-- [ ] Better Output Formatting
-- [ ] Multiple Watchlists
+Completed
+
+- RSI
+- ATR
+- MACD
+- Signal Line
+- Histogram
+- Stop Loss
+- Target
+- Risk
+- Reward
+- Reward : Risk
+- Modular indicators.py
+- Professional Console Output
 
 ---
 
-## Version 3
+# Version 2.1
 
-- [ ] Streamlit Dashboard
-- [ ] Interactive Charts
-- [ ] Portfolio Analysis
-- [ ] Telegram Alerts
-- [ ] AI Swing Scanner
-- [ ] AI Trade Explanations
+Completed
+
+- Relative Strength vs Nifty
+- Nifty downloaded once for efficiency
+- 7-Point Swing Scoring System
+
+---
+
+# Version 2.2
+
+- 52 Week High Detection
+
+---
+
+# Version 2.3
+
+- Relative Volume
+
+---
+
+# Version 2.4
+
+- Consolidation Detection
+- Signature Scanner Feature
+
+---
+
+# Version 2.5
+
+- Professional Report Generation
+
+---
+
+# Version 2.6
+
+- Ranking Engine
+
+---
+
+# Version 2.7
+
+- Nifty 500 Scanner
+
+---
+
+# Version 3
+
+- Streamlit Dashboard
+- Interactive Charts
+- Portfolio Analysis
+- Telegram Alerts
+- AI Swing Scanner
+- AI Trade Explanations

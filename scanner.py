@@ -1,8 +1,11 @@
 import pandas as pd
 import yfinance as yf
 
-from indicators import calculate_rsi,calculate_atr,calculate_macd
+from indicators import calculate_rsi,calculate_atr,calculate_macd,calculate_relative_strength
 VOLUME_MULTIPLIER = 1.2
+nifty_data = yf.download("^NSEI", period="6mo", progress=False)
+nifty_data.columns = nifty_data.columns.get_level_values(0)
+nifty_data = nifty_data.dropna(subset=["Close"])
 watchlist = pd.read_csv("data/stocks.csv")
 stocks = watchlist["Ticker"]
 for stock in stocks:
@@ -20,6 +23,7 @@ for stock in stocks:
         data = calculate_rsi(data)
         data = calculate_atr(data)
         data = calculate_macd(data)
+        rs = calculate_relative_strength(data, nifty_data)
         latest = data.iloc[-1]
         avg_volume = latest["vol20"]
         today_volume = latest["Volume"]
@@ -55,10 +59,17 @@ for stock in stocks:
             signals.append("✅ Bullish MACD")
         else:
             signals.append("❌ Bearish MACD")
+        if rs is not None and rs > 0:
+            score += 1
+            signals.append("✅ Outperforming Nifty")
+        elif rs is not None:
+            signals.append("❌ Underperforming Nifty")
+        else:
+            signals.append("⚠️ Relative Strength Unavailable")
         print("=" * 50)
         print(f"{stock:^50}")
         print("=" * 50)
-        print(f"{'Score':20}: {score}/6")
+        print(f"{'Score':20}: {score}/7")
         print(f"{'Close':20}: {latest['Close']:.2f}")
         print(f"{'MA20':20}: {latest['ma20']:.2f}")
         print(f"{'MA50':20}: {latest['ma50']:.2f}")
@@ -67,6 +78,10 @@ for stock in stocks:
         print(f"{'MACD':20}: {latest['macd']:.2f}")
         print(f"{'Signal':20}: {latest['signal']:.2f}")
         print(f"{'Histogram':20}: {latest['histogram']:.2f}")
+        if rs is None:
+            print(f"{'RS vs Nifty':20}: N/A")
+        else:
+            print(f"{'RS vs Nifty':20}: {rs:.2f}%")
         print("-" * 45)
         print(f"{'Stop Loss':20}: {latest['stoploss']:.2f}")
         print(f"{'Target':20}: {latest['target']:.2f}")

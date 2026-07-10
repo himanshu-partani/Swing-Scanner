@@ -4,58 +4,52 @@
 
 - Variables
 - Loops
-- If Else
-- Lists
 - Functions
+- Lists
 - Modules
-- Import Statements
-- Returning Values
-- Try & Except
-- Exception Handling
-- Temporary Variables
-- Modular Function Design
+- Error Handling
 
 ## Pandas
 
 - DataFrames
-- CSV Files
+- CSV Reading
 - Filtering
 - Sorting
 - Rolling Mean
-- shift()
-- clip()
-- abs()
-- axis=1
-- Multiple Column Selection
-- ewm()
-- Exponential Moving Average (EMA)
+- MultiIndex Handling
 
 ## Finance
 
 - OHLC Data
 - Moving Averages
-- Previous High
-- Volume Breakout
-- RSI (Relative Strength Index)
-- ATR (Average True Range)
-- MACD (Moving Average Convergence Divergence)
+- Previous High Breakouts
+- Volume Breakouts
+- RSI
+- ATR
+- MACD
 - Signal Line
 - Histogram
-- EMA vs SMA
-- Bullish & Bearish Momentum
-- Stop Loss
-- Target
-- Risk & Reward
-- Reward : Risk Ratio
+- Relative Strength vs Nifty
+- Risk Management
+- Reward : Risk
 
-## Software Development
+## Software Engineering
 
-- Project Structure
-- Refactoring
 - Modular Programming
-- Debugging
-- Error Handling
-- CSV Watchlists
-- Git
-- GitHub
-- VS Code
+- Creating reusable indicator functions
+- Efficient API usage
+- Separation of responsibilities
+- Git Workflow
+- Project documentation
+- Professional console formatting
+
+## Git
+
+- Repository creation
+- Git commits
+- Git push
+- Version management
+
+Current Version Completed:
+
+Version 2.1

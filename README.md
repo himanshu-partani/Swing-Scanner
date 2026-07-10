@@ -1,48 +1,68 @@
 # Swing Scanner
 
-A Python-based Swing Trading Scanner built while learning Python from scratch.
+A Python-based stock swing trading scanner built while learning Python from scratch.
 
-This project analyzes NSE stocks using multiple technical indicators and generates high-probability swing trading signals with built-in risk management.
+This project started as a way to learn Python but has gradually evolved into a modular technical analysis tool capable of scanning multiple Indian stocks using live Yahoo Finance data.
 
 ---
 
 ## Features
 
-- Live Yahoo Finance Data
-- Multi Stock Scanner
-- CSV Watchlist Support
+### Market Data
+- Live stock data from Yahoo Finance
+- CSV watchlist support
+- Error handling for invalid stocks
+- Modular project architecture
+
+### Technical Indicators
 - 20-Day Moving Average (MA20)
 - 50-Day Moving Average (MA50)
-- Previous 3-Month High Breakout
-- Volume Breakout Detection
 - RSI (Relative Strength Index)
 - ATR (Average True Range)
-- MACD (Moving Average Convergence Divergence)
-- Stop Loss Calculation
-- Target Calculation
+- MACD
+- Signal Line
+- MACD Histogram
+- Relative Strength vs Nifty
+
+### Breakout Detection
+- Previous 3-Month High Breakout
+- Volume Breakout Detection
+
+### Trade Planning
+- ATR Based Stop Loss
+- ATR Based Target
 - Risk Calculation
 - Reward Calculation
 - Reward : Risk Ratio
-- Professional Console Output
-- Error Handling for Invalid Tickers
-- Modular Indicator Architecture
+
+### Scoring System
+- 7-Point Swing Scoring System
+
+Current scoring factors:
+
+- Above MA20
+- Above MA50
+- Previous High Breakout
+- Volume Breakout
+- Healthy RSI
+- Bullish MACD
+- Outperforming Nifty
 
 ---
 
-## Technologies
+## Technologies Used
 
 - Python
 - Pandas
 - yfinance
 - Git
 - GitHub
-- VS Code
 
 ---
 
 ## Project Structure
 
-```text
+```
 Swing-Scanner/
 │
 ├── data/
@@ -62,3 +82,30 @@ Swing-Scanner/
 ├── README.md
 ├── requirements.txt
 └── .gitignore
+```
+
+---
+
+## Current Version
+
+Version 2.1
+
+Latest addition:
+
+- Relative Strength vs Nifty
+- Nifty downloaded once for better performance
+- 7-Point Scoring System
+- Improved professional console output
+
+---
+
+## Future Plans
+
+- 52 Week High Detection
+- Relative Volume
+- Consolidation Detection
+- Professional Reports
+- Ranking Engine
+- Nifty 500 Scanner
+- Streamlit Dashboard
+- AI Swing Scanner

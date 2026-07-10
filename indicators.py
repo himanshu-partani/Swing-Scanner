@@ -31,3 +31,17 @@ def calculate_macd(data):
     data["signal"] = data["macd"].ewm(span=9, adjust=False).mean()
     data["histogram"] = data["macd"] - data["signal"]
     return data
+
+def calculate_relative_strength(data, nifty_data):
+
+    if len(data) < 21 or len(nifty_data) < 21:
+        return None
+
+    today_close = data["Close"].iloc[-1]
+    close_20_days_ago = data["Close"].iloc[-21]
+    nifty_today_close = nifty_data["Close"].iloc[-1]
+    nifty_close_20_days_ago = nifty_data["Close"].iloc[-21]
+    stock_return = ((today_close - close_20_days_ago) / close_20_days_ago) * 100
+    nifty_return = ((nifty_today_close - nifty_close_20_days_ago) / nifty_close_20_days_ago) * 100
+    rs = stock_return - nifty_return
+    return rs
