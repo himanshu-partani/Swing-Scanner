@@ -45,3 +45,13 @@ def calculate_relative_strength(data, nifty_data):
     nifty_return = ((nifty_today_close - nifty_close_20_days_ago) / nifty_close_20_days_ago) * 100
     rs = stock_return - nifty_return
     return rs
+
+def calculate_52_week_high(data):
+    previous_52_week_high = data["High"][-253:-1].max()
+    return previous_52_week_high
+
+def calculate_relative_volume(data):
+    todays_volume = data["Volume"].iloc[-1]
+    avg_20_day_volume = data["Volume"].rolling(20).mean().iloc[-1]
+    rvol = todays_volume / avg_20_day_volume
+    return rvol

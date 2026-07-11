@@ -1,78 +1,65 @@
-# Swing Scanner
+# 📈 Swing Scanner
 
-A Python-based stock swing trading scanner built while learning Python from scratch.
+A Python-based Swing Trading Scanner built while learning Python from scratch.
 
-This project started as a way to learn Python but has gradually evolved into a modular technical analysis tool capable of scanning multiple Indian stocks using live Yahoo Finance data.
+Instead of learning Python through isolated exercises, this project applies programming concepts to a real-world trading application. The scanner downloads live NSE stock data, calculates multiple technical indicators, evaluates swing trading conditions, and generates trading signals using a modular architecture.
 
 ---
 
-## Features
+## ✨ Features
 
-### Market Data
-- Live stock data from Yahoo Finance
-- CSV watchlist support
-- Error handling for invalid stocks
-- Modular project architecture
+### Core
+
+* Live NSE stock data using Yahoo Finance
+* CSV-based watchlist
+* Modular architecture
+* Professional console output
+* Error handling
 
 ### Technical Indicators
-- 20-Day Moving Average (MA20)
-- 50-Day Moving Average (MA50)
-- RSI (Relative Strength Index)
-- ATR (Average True Range)
-- MACD
-- Signal Line
-- MACD Histogram
-- Relative Strength vs Nifty
+
+* 20-Day Moving Average (MA20)
+* 50-Day Moving Average (MA50)
+* RSI (Relative Strength Index)
+* ATR (Average True Range)
+* MACD
+* MACD Signal Line
+* MACD Histogram
+* Relative Strength vs Nifty
 
 ### Breakout Detection
-- Previous 3-Month High Breakout
-- Volume Breakout Detection
+
+* Previous 3-Month High
+* Previous 52-Week High
+* Relative Volume (RVOL)
 
 ### Trade Planning
-- ATR Based Stop Loss
-- ATR Based Target
-- Risk Calculation
-- Reward Calculation
-- Reward : Risk Ratio
 
-### Scoring System
-- 7-Point Swing Scoring System
+* Stop Loss
+* Target Price
+* Risk Calculation
+* Reward Calculation
+* Reward : Risk Ratio
 
-Current scoring factors:
+### Scanner
 
-- Above MA20
-- Above MA50
-- Previous High Breakout
-- Volume Breakout
-- Healthy RSI
-- Bullish MACD
-- Outperforming Nifty
+* 8-Point Swing Scoring System
+* Trading Signals
+* Professional formatted output
 
 ---
 
-## Technologies Used
-
-- Python
-- Pandas
-- yfinance
-- Git
-- GitHub
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 Swing-Scanner/
 │
 ├── data/
 │   └── stocks.csv
-│
 ├── docs/
 │   ├── LEARNING_LOG.md
 │   ├── PROJECT_STATUS.md
 │   └── ROADMAP.md
-│
 ├── reports/
 ├── indicators.py
 ├── scanner.py
@@ -86,26 +73,83 @@ Swing-Scanner/
 
 ---
 
-## Current Version
+## 🛠️ Technologies Used
 
-Version 2.1
-
-Latest addition:
-
-- Relative Strength vs Nifty
-- Nifty downloaded once for better performance
-- 7-Point Scoring System
-- Improved professional console output
+* Python
+* Pandas
+* yfinance
+* Git
+* GitHub
 
 ---
 
-## Future Plans
+## 📊 Current Scanner Logic
 
-- 52 Week High Detection
-- Relative Volume
-- Consolidation Detection
-- Professional Reports
-- Ranking Engine
-- Nifty 500 Scanner
-- Streamlit Dashboard
-- AI Swing Scanner
+The scanner evaluates each stock using the following conditions:
+
+* Above 20-Day Moving Average
+* Above 50-Day Moving Average
+* 3-Month High Breakout
+* Relative Volume Breakout
+* Healthy RSI (50–70)
+* Bullish MACD
+* Outperforming Nifty
+* 52-Week High Breakout
+
+Each satisfied condition earns one point.
+
+Maximum Score: **8/8**
+
+---
+
+## 🚀 Current Version
+
+**Version 2.2**
+
+### Highlights
+
+* Added Previous 52-Week High Detection
+* Added Relative Volume (RVOL)
+* Upgraded from a 7-point scanner to an 8-point scoring system
+* Improved breakout calculations using fixed trading-day lookback windows
+* Improved console formatting and naming consistency
+
+---
+
+## 🎯 Future Roadmap
+
+* Consolidation Detection
+* Support & Resistance
+* Automatic CSV Reports
+* Ranked Scanner Results
+* Portfolio Scanner
+* Streamlit Dashboard
+* Charts
+* Telegram Alerts
+* AI-Based Trade Explanations
+
+---
+
+## 📚 Learning Goals
+
+This project is part of my journey of learning:
+
+* Python
+* Pandas
+* Financial Data Analysis
+* Technical Indicators
+* Software Architecture
+* Git & GitHub
+* Clean Code Practices
+
+---
+
+## 🤝 Contributions
+
+This project is currently a personal learning project. Suggestions and improvements are always welcome.
+
+---
+
+## ⭐ Acknowledgements
+
+Market data is provided through Yahoo Finance using the `yfinance` Python library.
