@@ -1,178 +1,101 @@
-# 📘 LEARNING_LOG
+# LEARNING LOG
 
-## Project: Swing Scanner
+## Purpose
 
-This document tracks what I learned while building the Swing Scanner project.
+This document records everything learned while building Swing Scanner.
 
----
+------------------------------------------------------------------------
 
-# Version 1.0
+# Version 1
 
-### Python Concepts
+Learned: - Variables - Conditions - Loops - Functions - Lists -
+Dictionaries
 
-* Variables
-* Loops
-* Functions
-* Lists
-* Reading CSV files
-* Error handling using `try` and `except`
+Applied learning by creating: - Live Stock Scanner - Moving Average
+Scanner
 
-### Libraries
+Key Lesson: Learning through a real project is far more effective than
+isolated exercises.
 
-* Pandas basics
-* yfinance
-* Working with DataFrames
-
-### Features Built
-
-* Live stock data download
-* 20-Day Moving Average
-* 50-Day Moving Average
-* Multi-stock scanner
-
----
-
-# Version 1.1
-
-### Learned
-
-* Better project organization
-* Cleaner console output
-* Modular thinking
-* Code readability improvements
-
----
+------------------------------------------------------------------------
 
 # Version 1.2
 
-### Technical Indicators
+Learned: - Pandas - yfinance - Modular Programming - Creating reusable
+functions
 
-* RSI
-* ATR
+Implemented: - RSI - ATR - MACD - Risk Management
 
-### Trade Planning
+Key Lesson: Reusable code is easier to maintain than copying logic.
 
-* Stop Loss
-* Target Price
-* Risk
-* Reward
-* Reward : Risk Ratio
-
-### Software Engineering
-
-* Created `indicators.py`
-* Moved calculations into reusable functions
-* Improved project structure
-
----
+------------------------------------------------------------------------
 
 # Version 2.0
 
-### Data Management
+Learned: - Reading CSV files - Better project organisation - Error
+handling
 
-* Switched from a hardcoded watchlist to a CSV-based watchlist
-* Improved error handling
-* Better scanner architecture
+Implemented: - CSV Watchlist
 
-### Git & GitHub
+Key Lesson: Software should be data-driven instead of hardcoded.
 
-* Learned Git basics
-* Created a GitHub repository
-* Managed commits and version history
-
----
+------------------------------------------------------------------------
 
 # Version 2.1
 
-### Technical Indicators
+Learned: - Relative Strength calculations - Comparing stocks against an
+index
 
-* MACD
-* Signal Line
-* Histogram
-* Relative Strength vs Nifty
+Implemented: - Relative Strength vs Nifty - Relative Volume
 
-### Scanner Improvements
-
-* 7-Point Swing Scoring System
-* Professional scanner output
-* Better modular design
-* Cleaner code organization
-
----
+------------------------------------------------------------------------
 
 # Version 2.2
 
-## New Features
+Learned: - Breakout logic - Better scanner architecture - Cleaner output
+formatting
 
-### Previous 52-Week High
+Implemented: - Previous 3 Month High - Previous 52 Week High
 
-Learned:
+------------------------------------------------------------------------
 
-* Difference between calendar days and trading days
-* Why a trading year is approximately 252 trading sessions
-* Why today's candle should be excluded while calculating previous highs
-* Fixed lookback windows instead of relying on the download period
-* Difference between 3-Month High and 52-Week High breakouts
+# ⭐ Version 2.3
 
----
+Biggest milestone so far.
 
-### Relative Volume (RVOL)
+Focus shifted from indicators to software engineering.
 
-Learned:
+Implemented: - Complete Market Structure Engine - Swing Point
+Detection - Zone Grouping - Zone Filtering - Zone Strength
+Classification - Distance Calculations - Market Structure Scoring
 
-* Relative Volume formula
+Software Engineering Concepts Learned: - Single Responsibility
+Principle - Modular Design - Refactoring - Function Design - Clean
+Architecture - Algorithm Design - Testing across multiple scenarios -
+Incremental feature development
 
-  RVOL = Today's Volume / 20-Day Average Volume
+Testing: - Large Caps - Banks - IT - Defence - Momentum Stocks - Weak
+Stocks
 
-* Why traders prefer Relative Volume over comparing raw volume numbers
+Key Lesson:
 
-* How Relative Volume measures trading activity relative to normal participation
+Writing code is only one part of software development.
 
-* Using RVOL as a cleaner breakout confirmation signal
+Planning, testing, documentation, architecture and refactoring are
+equally important.
 
----
+------------------------------------------------------------------------
 
-### Software Engineering
+# Looking Ahead
 
-Learned:
+Version 3 will focus on:
 
-* Better function design
-* Choosing between variables and reusable functions
-* Cleaner naming conventions
-* Using constants instead of magic numbers
-* Consistent console formatting
-* Improving code readability
-* Thinking about edge cases (such as newly listed stocks)
+-   Performance
+-   Scalability
+-   Ranking
+-   Professional Scoring
+-   Nifty 500 Scanning
+-   Report Generation
 
----
-
-### Architecture Improvements
-
-* Improved scanner modularity
-* Fixed 3-Month High calculation using a fixed 63-day lookback
-* Added Previous 52-Week High calculation
-* Upgraded from a 7-point scanner to an 8-point scoring system
-
----
-
-# Overall Progress
-
-Through this project, I have learned:
-
-* Python fundamentals
-* Pandas
-* Working with financial market data
-* Technical analysis indicators
-* Modular software design
-* Git & GitHub
-* Writing cleaner and more maintainable code
-* Building a real-world Python project step by step instead of following tutorials
-
----
-
-## Next Version
-
-**Version 2.3**
-
-* Consolidation Detection
-* Further improvements to the Swing Scanner
+The goal is to transition from a learning project into a practical stock
+analysis tool.

@@ -1,196 +1,136 @@
-# 📗 PROJECT_STATUS
+# PROJECT STATUS
 
-# Swing Scanner
+## Project
 
-**Current Version:** **2.2**
+**Swing Scanner**
 
-**Project Status:** 🟢 Active Development
+## Current Version
 
----
+**Version 2.3 -- Complete**
 
-# Overview
+------------------------------------------------------------------------
 
-The Swing Scanner is a Python-based swing trading scanner built while learning Python from scratch.
+# Project Objective
 
-The project downloads live NSE stock data, calculates multiple technical indicators, evaluates swing trading conditions, generates trade plans, and assigns a swing score to each stock.
+Swing Scanner is a modular Python application that scans NSE stocks for
+swing trading opportunities using technical indicators, market structure
+analysis and risk management.
 
-The project focuses on writing clean, modular, and maintainable code while gradually learning software engineering principles.
+The project was built while learning Python from scratch and has
+gradually evolved into a structured software engineering project.
 
----
+------------------------------------------------------------------------
 
-# Completed Features
+# Current Architecture
 
-## Core
+## scanner.py
 
-* Live Yahoo Finance data
-* CSV Watchlist
-* Error Handling
-* Modular Architecture
-* Professional Console Output
+Responsible for: - Downloading market data - Calling indicator
+functions - Calling market structure functions - Calculating scores -
+Generating trading signals - Printing professional reports
 
----
+## indicators.py
 
-## Technical Indicators
+Contains reusable indicator functions.
 
-* 20-Day Moving Average (MA20)
-* 50-Day Moving Average (MA50)
-* RSI
-* ATR
-* MACD
-* MACD Signal Line
-* MACD Histogram
-* Relative Strength vs Nifty
-* Relative Volume (RVOL)
+Implemented: - RSI - ATR - MACD - Relative Strength vs Nifty - Relative
+Volume - Previous 52 Week High - Consolidation Detection
 
----
+## market_structure.py
 
-## Breakout Detection
+Contains every price-action based algorithm.
 
-* Previous 3-Month High
-* Previous 52-Week High
+Implemented: - Swing Point Detection - Zone Grouping - Zone Filtering -
+Nearest Support Detection - Nearest Resistance Detection - Zone Strength
+Classification - Distance to Support - Distance to Resistance
 
----
+------------------------------------------------------------------------
 
-## Trade Planning
+# Current Features
 
-* Stop Loss
-* Target
-* Risk
-* Reward
-* Reward : Risk Ratio
+## Data
 
----
+-   Live Yahoo Finance Data
+-   CSV Watchlist
+-   Multi Stock Scanner
+
+## Trend
+
+-   20 Day Moving Average
+-   50 Day Moving Average
+
+## Momentum
+
+-   RSI
+-   MACD
+
+## Relative Performance
+
+-   Relative Strength
+-   Relative Volume
+
+## Breakout Analysis
+
+-   Previous 3 Month High
+-   Previous 52 Week High
+
+## Volatility
+
+-   ATR
+
+## Consolidation
+
+-   Range Percentage
+-   ATR Percentage
+
+## Market Structure
+
+-   Swing Points
+-   Support & Resistance Zones
+-   Zone Strength
+-   Distance Calculations
+
+## Risk Management
+
+-   Stop Loss
+-   Target
+-   Risk
+-   Reward
+-   Reward : Risk
 
 ## Scanner
 
-* 8-Point Swing Scoring System
-* Trading Signals
-* Breakout Detection
-* Relative Strength Analysis
-* Relative Volume Confirmation
+-   Trading Signals
+-   Professional Console Output
+-   11 Point Scoring System
 
----
+------------------------------------------------------------------------
 
-# Current Project Structure
+# Testing Summary
 
-```text
-Swing-Scanner/
-│
-├── data/
-│   └── stocks.csv
-├── docs/
-│   ├── LEARNING_LOG.md
-│   ├── PROJECT_STATUS.md
-│   └── ROADMAP.md
-├── reports/
-├── indicators.py
-├── scanner.py
-├── stockanalysis.py
-├── live_data.py
-├── pandasbasics.py
-├── README.md
-├── requirements.txt
-└── .gitignore
-```
+Version 2.3 was tested on: - Large Cap Stocks - Banking Stocks - IT
+Stocks - Defence Stocks - Momentum Stocks - Mid Cap Stocks - Weak /
+Downtrend Stocks
 
----
+Results: - Stable execution - No crashes - Correct support/resistance
+detection - Correct distance calculations - Logical scoring
 
-# Current Strengths
+------------------------------------------------------------------------
 
-* Clean modular architecture
-* Reusable indicator functions
-* Professional console output
-* Consistent naming conventions
-* Good code readability
-* Live market data integration
-* Risk management calculations
-* Multiple technical indicators
-* Structured Git workflow
+# Repository Status
 
----
+Current Release: **Version 2.3**
 
-# Current Limitations
+Status: ✅ Stable
 
-The scanner currently does **not** include:
+Ready for: - GitHub Release - Version 3 Development
 
-* Consolidation Detection
-* Support & Resistance
-* Automatic CSV Reports
-* Ranked Results
-* Portfolio Scanner
-* Streamlit Dashboard
-* Charts
-* Telegram Alerts
-* AI-based Trade Explanations
-
----
+------------------------------------------------------------------------
 
 # Next Milestone
 
-## Version 2.3
+Version 3
 
-### Planned Feature
-
-* Consolidation Detection
-
-This feature will identify stocks trading in a tight price range before a potential breakout, improving the quality of swing trade opportunities detected by the scanner.
-
----
-
-# Development Workflow
-
-Every version follows the same workflow:
-
-Feature Development
-
-↓
-
-Cleanup & Refactoring
-
-↓
-
-Testing
-
-↓
-
-Documentation Update
-
-↓
-
-Git Commit
-
-↓
-
-Git Push
-
----
-
-# Overall Progress
-
-Project Foundation
-
-* ✅ Completed
-
-Technical Indicators
-
-* ✅ Completed (Current Scope)
-
-Breakout Detection
-
-* ✅ Completed (Current Scope)
-
-Trade Planning
-
-* ✅ Completed
-
-Scanner Logic
-
-* ✅ Completed
-
-Documentation
-
-* ✅ Maintained
-
-Future Enhancements
-
-* 🚧 In Progress
+Primary focus: - Batch Download System - Nifty 500 Scanner -
+Professional Scoring Engine - Ranking System - CSV Reports - Performance
+Optimisation

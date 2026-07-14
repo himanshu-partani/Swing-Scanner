@@ -33,10 +33,8 @@ def calculate_macd(data):
     return data
 
 def calculate_relative_strength(data, nifty_data):
-
     if len(data) < 21 or len(nifty_data) < 21:
         return None
-
     today_close = data["Close"].iloc[-1]
     close_20_days_ago = data["Close"].iloc[-21]
     nifty_today_close = nifty_data["Close"].iloc[-1]
@@ -55,3 +53,13 @@ def calculate_relative_volume(data):
     avg_20_day_volume = data["Volume"].rolling(20).mean().iloc[-1]
     rvol = todays_volume / avg_20_day_volume
     return rvol
+
+def calculate_consolidation(data):
+    highest_high = data["High"][-16:-1].max()
+    lowest_low = data["Low"][-16:-1].min()
+    range_percent = ((highest_high - lowest_low) / lowest_low) * 100
+    average_atr = data["atr"][-16:-1].mean()
+    latest_close = data["Close"].iloc[-1]
+    atr_percent = (average_atr / latest_close) * 100
+    return round(range_percent, 2), round(atr_percent, 2)
+

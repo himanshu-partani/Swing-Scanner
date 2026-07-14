@@ -1,198 +1,99 @@
-# 📙 ROADMAP
+# ROADMAP
 
-# Swing Scanner Development Roadmap
+Swing Scanner follows an incremental version-based development approach.
 
-This roadmap tracks the planned evolution of the Swing Scanner project.
+------------------------------------------------------------------------
 
----
+# ✅ Completed
 
-# ✅ Version 1.0 — Project Foundation
+## Version 1
 
-Completed
+Goal: Learn Python while solving a real trading problem.
 
-### Features
+Implemented: - Live Yahoo Finance Data - 20 Day MA - 50 Day MA - Multi
+Stock Scanner
 
-* Live Yahoo Finance Data
-* Multi-Stock Scanner
-* 20-Day Moving Average
-* 50-Day Moving Average
+------------------------------------------------------------------------
 
----
+## Version 1.2
 
-# ✅ Version 1.1 — Code Improvements
+Implemented: - RSI - ATR - MACD - Risk Management - indicators.py module
 
-Completed
+------------------------------------------------------------------------
 
-### Features
+## Version 2.0
 
-* Cleaner Code
-* Better Console Output
-* Improved Readability
+Implemented: - CSV Watchlist - Better Console Output - Improved Error
+Handling
 
----
+------------------------------------------------------------------------
 
-# ✅ Version 1.2 — Risk Management
+## Version 2.1
 
-Completed
+Implemented: - Relative Strength vs Nifty - Relative Volume
 
-### Features
+------------------------------------------------------------------------
 
-* RSI
-* ATR
-* Stop Loss
-* Target
-* Risk Calculation
-* Reward Calculation
-* Reward : Risk Ratio
-* Modular Indicator Functions
+## Version 2.2
 
----
+Implemented: - Previous 3 Month High - Previous 52 Week High - Improved
+Scanner Structure
 
-# ✅ Version 2.0 — Scanner Upgrade
+------------------------------------------------------------------------
 
-Completed
+## ⭐ Version 2.3
 
-### Features
+Major Release
 
-* CSV Watchlist
-* Error Handling
-* Better Project Structure
-* GitHub Integration
+Implemented: - Consolidation Detection - Complete Market Structure
+Engine - Swing Point Detection - Zone Grouping - Zone Filtering -
+Nearest Support - Nearest Resistance - Zone Strength - Distance
+Calculations - Market Structure Scoring - Professional Testing
 
----
+------------------------------------------------------------------------
 
-# ✅ Version 2.1 — Momentum Indicators
+# 🚀 Version 3
 
-Completed
+## Phase 1
 
-### Features
+-   Batch Download System
+-   Nifty 500 Scanner
+-   Faster Data Pipeline
 
-* MACD
-* MACD Signal Line
-* Histogram
-* Relative Strength vs Nifty
-* 7-Point Swing Scoring System
-* Professional Scanner Output
+## Phase 2
 
----
+-   Professional Scoring Engine
+-   Category-wise Scores
+-   Ranking System
+-   CSV Reports
 
-# ✅ Version 2.2 — Breakout Improvements
+## Phase 3
 
-Completed
+-   Scanner Filters
+-   Summary Reports
+-   Performance Optimisation
 
-### Features
+------------------------------------------------------------------------
 
-* Previous 52-Week High Detection
-* Relative Volume (RVOL)
-* Fixed 3-Month Lookback Window
-* 8-Point Swing Scoring System
-* Improved Scanner Output
-* Better Naming Consistency
-* Cleaner Project Structure
+# 🌟 Version 4
 
----
+-   Interactive Charts
+-   Streamlit Dashboard
+-   Portfolio Scanner
+-   Watchlists
 
-# 🚧 Version 2.3 — Consolidation Detection
+------------------------------------------------------------------------
 
-Planned
+# 🔮 Version 5
 
-### Features
+-   AI Trade Analysis
+-   News Integration
+-   Telegram Alerts
+-   Portfolio Analytics
 
-* Consolidation Detection
-* Tight Range Detection
-* Breakout Base Identification
-* Consolidation Signal
-* Scanner Integration
+------------------------------------------------------------------------
 
----
+# Long Term Vision
 
-# 🔮 Version 3.0 — Advanced Scanner
-
-Planned
-
-### Features
-
-* Support Detection
-* Resistance Detection
-* Automatic Stock Ranking
-* CSV Report Generation
-* Ranked Scan Results
-
----
-
-# 🔮 Version 3.1 — Portfolio Tools
-
-Planned
-
-### Features
-
-* Portfolio Scanner
-* Portfolio Health Check
-* Position Summary
-* Watchlist Improvements
-
----
-
-# 🔮 Version 4.0 — User Interface
-
-Planned
-
-### Features
-
-* Streamlit Dashboard
-* Interactive Charts
-* Filters
-* Search
-* Better Visualizations
-
----
-
-# 🔮 Version 5.0 — Automation
-
-Planned
-
-### Features
-
-* Telegram Alerts
-* Scheduled Scans
-* Daily Reports
-* Export Reports
-
----
-
-# 🤖 Future Vision
-
-Long-term goals for the project:
-
-* AI Trade Explanations
-* AI Stock Ranking
-* Strategy Backtesting
-* Portfolio Analytics
-* Performance Tracking
-* Additional Technical Indicators
-* Improved Risk Management
-* Professional Reporting Dashboard
-
----
-
-# Development Philosophy
-
-This project is built with the following principles:
-
-* Learn by building real projects
-* Keep the code modular and maintainable
-* Improve one feature at a time
-* Test every feature before release
-* Document every completed version
-* Use Git and GitHub for version control
-* Focus on clean software engineering practices
-
----
-
-# Current Status
-
-**Current Version:** ✅ Version 2.2
-
-**Next Version:** 🚧 Version 2.3 — Consolidation Detection
-
-The project will continue to evolve step by step while maintaining clean architecture, proper documentation, and production-quality code.
+Build Swing Scanner into a complete stock analysis platform combining
+technical analysis, market structure, ranking, reporting and automation.

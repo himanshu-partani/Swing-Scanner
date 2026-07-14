@@ -8,10 +8,23 @@ from indicators import (
     calculate_relative_strength,
     calculate_52_week_high,
     calculate_relative_volume,
+    calculate_consolidation,
+    
+)
+from market_structure import(
+    find_swing_points,
+    group_swing_points,
+    find_nearest_zones,
+    filter_zones,
+    calculate_zone_distance,
 )
 
 LOOKBACK_3_MONTHS = 63
 VOLUME_MULTIPLIER = 1.2
+CONSOLIDATION_RANGE_THRESHOLD = 5
+CONSOLIDATION_ATR_THRESHOLD = 2
+MIN_SUPPORT_TOUCHES = 2
+MIN_RESISTANCE_TOUCHES = 2
 
 # Download Nifty data once
 nifty_data = yf.download("^NSEI", period="13mo", progress=False)
@@ -31,6 +44,7 @@ for stock in stocks:
             continue
         data.columns = data.columns.get_level_values(0)
         data = data.dropna(subset=["Close"])
+        current_price = float(data["Close"].iloc[-1])
 
         # Moving Averages
         data["ma20"] = data["Close"].rolling(20).mean()
@@ -44,6 +58,16 @@ for stock in stocks:
         rs = calculate_relative_strength(data, nifty_data)
         previous_52_week_high = calculate_52_week_high(data)
         relative_volume = calculate_relative_volume(data)
+        consolidation_percent , atr_percent = calculate_consolidation(data)
+
+        #Market Structure
+        swing_lows , swing_highs = find_swing_points(data ,window = 5)
+        support_zones = group_swing_points(swing_lows)
+        resistance_zones = group_swing_points(swing_highs)
+        support_zones = filter_zones(support_zones,MIN_SUPPORT_TOUCHES)
+        resistance_zones = filter_zones(resistance_zones,MIN_RESISTANCE_TOUCHES)
+        nearest_support, nearest_resistance = find_nearest_zones(support_zones,resistance_zones,current_price)
+        support_distance, resistance_distance = calculate_zone_distance(nearest_support,nearest_resistance,current_price)
 
         latest = data.iloc[-1]
         avg_volume = latest["vol20"]
@@ -109,13 +133,47 @@ for stock in stocks:
         else:
             signals.append("❌ No 52-Week High Breakout")
 
+        # Consolidation
+        if (
+            consolidation_percent < CONSOLIDATION_RANGE_THRESHOLD
+            and atr_percent < CONSOLIDATION_ATR_THRESHOLD):
+                score += 1
+                signals.append("✅ Tight Consolidation")
+        else:
+                signals.append("❌ No Consolidation")
+
+
+
+        # Market Structure
+
+        # Strong Nearby Support
+        if (
+            nearest_support is not None
+            and support_distance is not None
+            and support_distance <= 5
+            and nearest_support["strength"] != "Weak"
+        ):
+            score += 1
+            signals.append("✅ Strong Nearby Support")
+        else:
+            signals.append("❌ Weak/Far Support")
+        # Plenty of Upside
+        if nearest_resistance is None:
+            score += 1
+            signals.append("✅ Clear Overhead (No Resistance Found)")
+        elif resistance_distance is not None and resistance_distance >= 5:
+            score += 1
+            signals.append("✅ Plenty of Upside")
+        else:
+            signals.append("❌ Resistance Too Close")
+        
         # -------------------- OUTPUT --------------------
 
         print("=" * 50)
         print(f"{stock:^50}")
         print("=" * 50)
 
-        print(f"{'Score':20}: {score}/8")
+        print(f"{'Score':20}: {score}/11")
         print(f"{'Close':20}: {latest['Close']:.2f}")
         print(f"{'MA20':20}: {latest['ma20']:.2f}")
         print(f"{'MA50':20}: {latest['ma50']:.2f}")
@@ -144,6 +202,63 @@ for stock in stocks:
         print(f"{'Todays Volume':20}: {todays_volume:,.0f}")
         print(f"{'20D Avg Volume':20}: {avg_volume:,.0f}")
         print(f"{'Relative Volume':20}: {relative_volume:.2f}x")
+
+        print(f"{'Consolidation %':20}: {consolidation_percent:.2f}")
+        print(f"{'ATR %':20}: {atr_percent:.2f}")
+
+        print("---------------------------------------------")
+        print("Market Structure")
+
+        # Nearest Support
+        if nearest_support is not None:
+            print(
+                f"{'Nearest Support':25}: "
+                f"{nearest_support['zone_low']:.2f} - "
+                f"{nearest_support['zone_high']:.2f}"
+            )
+            print(
+                f"{'Support Touches':25}: "
+                f"{nearest_support['touches']}"
+            )
+            print(
+                f"{'Support Strength':25}: "
+                f"{nearest_support['strength']}"
+            )
+            print(
+                f"{'Distance to Support':25}: "
+                f"{support_distance:.2f}%"
+            )
+        else:
+            print(f"{'Nearest Support':25}: None")
+            print(f"{'Support Touches':25}: -")
+            print(f"{'Support Strength':25}: -")
+            print(f"{'Distance to Support':25}: -")
+                
+        # Nearest Resistance
+        if nearest_resistance is not None:
+            print(
+                f"{'Nearest Resistance':25}: "
+                f"{nearest_resistance['zone_low']:.2f} - "
+                f"{nearest_resistance['zone_high']:.2f}"
+            )
+            print(
+                f"{'Resistance Touches':25}: "
+                f"{nearest_resistance['touches']}"
+            )
+            print(
+                f"{'Resistance Strength':25}: "
+                f"{nearest_resistance['strength']}"
+            )
+
+            print(
+            f"{'Distance to Resistance':25}:"
+            f"{resistance_distance:.2f}%"
+            )
+        else:
+            print(f"{'Nearest Resistance':25}: None")
+            print(f"{'Resistance Touches':25}: -")
+            print(f"{'Resistance Strength':25}: -")
+            print(f"{'Distance to Resistance':25}: -")
 
         print("-" * 45)
         print()

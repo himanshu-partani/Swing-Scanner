@@ -1,155 +1,230 @@
-# 📈 Swing Scanner
+# Swing Scanner
 
-A Python-based Swing Trading Scanner built while learning Python from scratch.
+> **A modular Python-based Swing Trading Scanner for the Indian Stock
+> Market.**
 
-Instead of learning Python through isolated exercises, this project applies programming concepts to a real-world trading application. The scanner downloads live NSE stock data, calculates multiple technical indicators, evaluates swing trading conditions, and generates trading signals using a modular architecture.
+Swing Scanner is a personal software engineering project that I started
+while learning Python. Instead of building small tutorial projects, I
+decided to solve a real-world problem by creating a swing trading
+scanner for NSE stocks.
 
----
+The project has grown version by version---from basic moving averages to
+a complete Market Structure Engine with support & resistance detection,
+risk management, and a modular architecture.
 
-## ✨ Features
+------------------------------------------------------------------------
 
-### Core
+# Features
 
-* Live NSE stock data using Yahoo Finance
-* CSV-based watchlist
-* Modular architecture
-* Professional console output
-* Error handling
+## Trend Analysis
 
-### Technical Indicators
+-   20-Day Moving Average
+-   50-Day Moving Average
 
-* 20-Day Moving Average (MA20)
-* 50-Day Moving Average (MA50)
-* RSI (Relative Strength Index)
-* ATR (Average True Range)
-* MACD
-* MACD Signal Line
-* MACD Histogram
-* Relative Strength vs Nifty
+## Momentum
 
-### Breakout Detection
+-   RSI
+-   MACD
 
-* Previous 3-Month High
-* Previous 52-Week High
-* Relative Volume (RVOL)
+## Relative Performance
 
-### Trade Planning
+-   Relative Strength vs Nifty
 
-* Stop Loss
-* Target Price
-* Risk Calculation
-* Reward Calculation
-* Reward : Risk Ratio
+## Volume Analysis
 
-### Scanner
+-   Relative Volume
+-   Volume Breakout Detection
 
-* 8-Point Swing Scoring System
-* Trading Signals
-* Professional formatted output
+## Breakout Analysis
 
----
+-   Previous 3-Month High
+-   Previous 52-Week High
 
-## 📁 Project Structure
+## Volatility
 
-```
+-   ATR
+
+## Market Structure Engine (Version 2.3)
+
+-   Swing Point Detection
+-   Zone Grouping
+-   Zone Filtering
+-   Nearest Support
+-   Nearest Resistance
+-   Zone Strength Classification
+-   Distance to Support
+-   Distance to Resistance
+
+## Risk Management
+
+-   Stop Loss
+-   Target Price
+-   Risk
+-   Reward
+-   Reward : Risk Ratio
+
+## Scanner
+
+-   CSV Watchlist
+-   Multi-stock Scanning
+-   Trading Signals
+-   Professional Console Output
+-   11-Point Scoring System
+
+------------------------------------------------------------------------
+
+# Project Structure
+
+``` text
 Swing-Scanner/
 │
 ├── data/
 │   └── stocks.csv
+│
 ├── docs/
 │   ├── LEARNING_LOG.md
 │   ├── PROJECT_STATUS.md
 │   └── ROADMAP.md
+│
 ├── reports/
-├── indicators.py
+│
 ├── scanner.py
-├── stockanalysis.py
-├── live_data.py
-├── pandasbasics.py
+├── indicators.py
+├── market_structure.py
+│
 ├── README.md
 ├── requirements.txt
 └── .gitignore
 ```
 
----
+------------------------------------------------------------------------
 
-## 🛠️ Technologies Used
+# Architecture
 
-* Python
-* Pandas
-* yfinance
-* Git
-* GitHub
+    scanner.py
+        │
+        ├── indicators.py
+        │      ├── RSI
+        │      ├── ATR
+        │      ├── MACD
+        │      ├── Relative Strength
+        │      ├── Relative Volume
+        │      ├── Consolidation
+        │      └── 52 Week High
+        │
+        └── market_structure.py
+               ├── Swing Point Detection
+               ├── Zone Grouping
+               ├── Zone Filtering
+               ├── Zone Strength
+               ├── Nearest Support
+               ├── Nearest Resistance
+               └── Distance Calculation
 
----
+------------------------------------------------------------------------
 
-## 📊 Current Scanner Logic
+# Current Scoring (Version 2.3)
 
-The scanner evaluates each stock using the following conditions:
+The scanner evaluates every stock using eleven independent checks.
 
-* Above 20-Day Moving Average
-* Above 50-Day Moving Average
-* 3-Month High Breakout
-* Relative Volume Breakout
-* Healthy RSI (50–70)
-* Bullish MACD
-* Outperforming Nifty
-* 52-Week High Breakout
+1.  Above 20 MA
+2.  Above 50 MA
+3.  Previous 3-Month High Breakout
+4.  Relative Volume Breakout
+5.  Healthy RSI
+6.  Bullish MACD
+7.  Outperforming Nifty
+8.  Previous 52-Week High Breakout
+9.  Tight Consolidation
+10. Strong Nearby Support
+11. Plenty of Upside
 
-Each satisfied condition earns one point.
+------------------------------------------------------------------------
 
-Maximum Score: **8/8**
+# Technologies
 
----
+-   Python
+-   Pandas
+-   NumPy
+-   yfinance
+-   Git
+-   GitHub
 
-## 🚀 Current Version
+------------------------------------------------------------------------
 
-**Version 2.2**
+# Version History
 
-### Highlights
+## Version 1
 
-* Added Previous 52-Week High Detection
-* Added Relative Volume (RVOL)
-* Upgraded from a 7-point scanner to an 8-point scoring system
-* Improved breakout calculations using fixed trading-day lookback windows
-* Improved console formatting and naming consistency
+-   Live Data
+-   Moving Averages
+-   Multi-stock Scanner
 
----
+## Version 1.2
 
-## 🎯 Future Roadmap
+-   RSI
+-   ATR
+-   MACD
+-   Risk Management
 
-* Consolidation Detection
-* Support & Resistance
-* Automatic CSV Reports
-* Ranked Scanner Results
-* Portfolio Scanner
-* Streamlit Dashboard
-* Charts
-* Telegram Alerts
-* AI-Based Trade Explanations
+## Version 2.0
 
----
+-   CSV Watchlist
+-   Better Project Structure
 
-## 📚 Learning Goals
+## Version 2.1
 
-This project is part of my journey of learning:
+-   Relative Strength
+-   Relative Volume
 
-* Python
-* Pandas
-* Financial Data Analysis
-* Technical Indicators
-* Software Architecture
-* Git & GitHub
-* Clean Code Practices
+## Version 2.2
 
----
+-   3-Month High
+-   52-Week High
+-   Better Scanner Output
 
-## 🤝 Contributions
+## Version 2.3
 
-This project is currently a personal learning project. Suggestions and improvements are always welcome.
+-   Complete Market Structure Engine
+-   Swing Point Detection
+-   Support & Resistance
+-   Zone Strength Classification
+-   Distance to Support & Resistance
+-   Market Structure Scoring
+-   Extensive Testing
+-   Modular Architecture Improvements
 
----
+------------------------------------------------------------------------
 
-## ⭐ Acknowledgements
+# Version 3 Roadmap
 
-Market data is provided through Yahoo Finance using the `yfinance` Python library.
+-   Batch Download System
+-   Nifty 500 Scanner
+-   Professional Scoring Engine
+-   Ranking System
+-   CSV Reports
+-   Scanner Filters
+-   Performance Optimization
+
+------------------------------------------------------------------------
+
+# Learning Outcomes
+
+Through this project I learned:
+
+-   Python Programming
+-   Pandas
+-   Financial Data Analysis
+-   Technical Analysis
+-   Algorithm Design
+-   Modular Software Architecture
+-   Refactoring
+-   Git & GitHub
+-   Software Documentation
+-   Testing and Debugging
+
+------------------------------------------------------------------------
+
+# License
+
+This project is built for educational purposes and continuous learning.
