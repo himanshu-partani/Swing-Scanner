@@ -23,6 +23,7 @@ def find_swing_points(data, window):
 
 def group_swing_points(swing_points, threshold_percent=1):
     zones = []
+
     for swing in swing_points:
         # Create first zone
         if not zones:
@@ -34,25 +35,44 @@ def group_swing_points(swing_points, threshold_percent=1):
                 "swing_points": [swing]
             })
             continue
+
         zone_found = False
+
         # Check every existing zone
         for zone in zones:
-            difference_percent = (
-                abs(swing["price"] - zone["average_price"])
-                / zone["average_price"]
+
+            distance_low = (
+                abs(swing["price"] - zone["zone_low"])
+                / zone["zone_low"]
             ) * 100
-            if difference_percent <= threshold_percent:
+
+            distance_high = (
+                abs(swing["price"] - zone["zone_high"])
+                / zone["zone_high"]
+            ) * 100
+
+            if (
+                distance_low <= threshold_percent
+                or distance_high <= threshold_percent
+            ):
+
                 zone["swing_points"].append(swing)
                 zone["touches"] += 1
+
                 prices = [
                     point["price"]
                     for point in zone["swing_points"]
                 ]
+
                 zone["zone_low"] = min(prices)
                 zone["zone_high"] = max(prices)
-                zone["average_price"] = sum(prices) / len(prices)
+                zone["average_price"] = (
+                    sum(prices) / len(prices)
+                )
+
                 zone_found = True
                 break
+
         if not zone_found:
             zones.append({
                 "zone_low": swing["price"],
