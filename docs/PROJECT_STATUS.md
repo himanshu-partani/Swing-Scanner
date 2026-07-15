@@ -6,7 +6,7 @@
 
 ## Current Version
 
-**Version 2.3 -- Complete**
+**Version 3.0 -- Complete**
 
 ------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ gradually evolved into a structured software engineering project.
 
 ## scanner.py
 
-Responsible for: - Downloading market data - Calling indicator
+Responsible for: - Calling data_loader - Calling indicator
 functions - Calling market structure functions - Calculating scores -
 Generating trading signals - Printing professional reports
 
@@ -119,11 +119,11 @@ detection - Correct distance calculations - Logical scoring
 
 # Repository Status
 
-Current Release: **Version 2.3**
+Current Release: **Version 3.0**
 
 Status: ✅ Stable
 
-Ready for: - GitHub Release - Version 3 Development
+Ready for: - Version 3.1 Professional Weighted Scoring Engine - Ranking System - CSV Reports
 
 ------------------------------------------------------------------------
 

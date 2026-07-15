@@ -8,9 +8,21 @@ while learning Python. Instead of building small tutorial projects, I
 decided to solve a real-world problem by creating a swing trading
 scanner for NSE stocks.
 
-The project has grown version by version---from basic moving averages to
-a complete Market Structure Engine with support & resistance detection,
-risk management, and a modular architecture.
+The project has grown version by version—from basic moving averages to a complete modular stock analysis platform featuring technical indicators, market structure analysis, risk management, centralized configuration and a high-performance batch download engine.
+
+------------------------------------------------------------------------
+
+# Latest Release
+
+**Current Version:** Version 3.0
+
+Highlights
+
+- Scanner Engine Rewrite
+- Batch Download Engine
+- Centralized Configuration
+- Modular Architecture
+- Nifty 500 Ready
 
 ------------------------------------------------------------------------
 
@@ -44,7 +56,7 @@ risk management, and a modular architecture.
 
 -   ATR
 
-## Market Structure Engine (Version 2.3)
+## Market Structure Engine
 
 -   Swing Point Detection
 -   Zone Grouping
@@ -88,6 +100,8 @@ Swing-Scanner/
 │
 ├── reports/
 │
+├── config.py
+├── data_loader.py
 ├── scanner.py
 ├── indicators.py
 ├── market_structure.py
@@ -123,7 +137,7 @@ Swing-Scanner/
 
 ------------------------------------------------------------------------
 
-# Current Scoring (Version 2.3)
+# Current Scoring (Version 3.0)
 
 The scanner evaluates every stock using eleven independent checks.
 
@@ -196,9 +210,8 @@ The scanner evaluates every stock using eleven independent checks.
 
 ------------------------------------------------------------------------
 
-# Version 3 Roadmap
+# Upcoming Roadmap
 
--   Batch Download System
 -   Nifty 500 Scanner
 -   Professional Scoring Engine
 -   Ranking System

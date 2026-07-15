@@ -99,3 +99,29 @@ Version 3 will focus on:
 
 The goal is to transition from a learning project into a practical stock
 analysis tool.
+
+
+------------------------------------------------------------------------
+
+# ⭐ Version 3.0
+
+Focus shifted from feature development to software architecture.
+
+Implemented:
+- config.py
+- data_loader.py
+- Batch Download Engine
+- Scanner Refactor
+
+Concepts Learned:
+- Configuration Management
+- Separation of Concerns
+- Data Layer Design
+- Batch Processing
+- Encapsulation
+- Interface vs Implementation
+- Performance Optimisation
+
+Key Lesson:
+
+Good architecture allows major internal improvements without changing the rest of the application. Swing Scanner is now ready for large watchlists such as the Nifty 500.

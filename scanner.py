@@ -1,5 +1,8 @@
-import pandas as pd
-import yfinance as yf
+from data_loader import (
+    load_watchlist,
+    download_nifty_data,
+    download_market_data,
+)
 
 from indicators import (
     calculate_rsi,
@@ -19,31 +22,33 @@ from market_structure import(
     calculate_zone_distance,
 )
 
-LOOKBACK_3_MONTHS = 63
-VOLUME_MULTIPLIER = 1.2
-CONSOLIDATION_RANGE_THRESHOLD = 5
-CONSOLIDATION_ATR_THRESHOLD = 2
-MIN_SUPPORT_TOUCHES = 2
-MIN_RESISTANCE_TOUCHES = 2
+from config import (
+    LOOKBACK_3_MONTHS,
+    VOLUME_MULTIPLIER,
+    CONSOLIDATION_MAX_RANGE_PERCENT,
+    CONSOLIDATION_MAX_ATR_PERCENT,
+    MIN_SUPPORT_TOUCHES,
+    MIN_RESISTANCE_TOUCHES,
+)
 
 # Download Nifty data once
-nifty_data = yf.download("^NSEI", period="13mo", progress=False)
-nifty_data.columns = nifty_data.columns.get_level_values(0)
-nifty_data = nifty_data.dropna(subset=["Close"])
+nifty_data = download_nifty_data()
 
 # Read watchlist
-watchlist = pd.read_csv("data/stocks.csv")
-stocks = watchlist["Ticker"]
+stocks = load_watchlist()
+
+market_data = download_market_data(stocks)
 
 for stock in stocks:
     signals = []
     try:
-        data = yf.download(stock, period="13mo", progress=False)
+        data = market_data[stock]
+
         if data.empty:
             print(f"⚠️ {stock} returned no data. Skipping...")
             continue
-        data.columns = data.columns.get_level_values(0)
-        data = data.dropna(subset=["Close"])
+
+        current_price = float(data["Close"].iloc[-1])
         current_price = float(data["Close"].iloc[-1])
 
         # Moving Averages
@@ -135,8 +140,8 @@ for stock in stocks:
 
         # Consolidation
         if (
-            consolidation_percent < CONSOLIDATION_RANGE_THRESHOLD
-            and atr_percent < CONSOLIDATION_ATR_THRESHOLD):
+            consolidation_percent < CONSOLIDATION_MAX_RANGE_PERCENT
+            and atr_percent < CONSOLIDATION_MAX_ATR_PERCENT):
                 score += 1
                 signals.append("✅ Tight Consolidation")
         else:
@@ -252,7 +257,7 @@ for stock in stocks:
 
             print(
             f"{'Distance to Resistance':25}:"
-            f"{resistance_distance:.2f}%"
+            f"{resistance_distance: .2f}%"
             )
         else:
             print(f"{'Nearest Resistance':25}: None")

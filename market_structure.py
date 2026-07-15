@@ -1,3 +1,8 @@
+from config import (
+    MIN_SUPPORT_TOUCHES,
+    MIN_RESISTANCE_TOUCHES,
+)
+
 def find_swing_points(data, window):
     swing_lows = []
     swing_highs = []
