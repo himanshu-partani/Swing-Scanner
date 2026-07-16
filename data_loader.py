@@ -28,3 +28,7 @@ def download_market_data(tickers):
         data = data.dropna(subset=["Close"])
         market_data[ticker] = data
     return market_data
+
+def load_nifty500():
+    df = pd.read_csv("data/nifty500.csv")
+    return df["Ticker"].tolist()

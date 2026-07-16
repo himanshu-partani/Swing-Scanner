@@ -1,8 +1,13 @@
-from report import print_report
+from scoring import calculate_score
+from scoring import get_rating
+from report import build_report, print_report , print_market_summary ,print_top_setups
+from ranking import sort_results
+from config import (SCAN_MODE , OUTPUT_MODE )
 from data_loader import (
     load_watchlist,
     download_nifty_data,
     download_market_data,
+    load_nifty500
 )
 
 from indicators import (
@@ -35,12 +40,23 @@ from config import (
 # Download Nifty data once
 nifty_data = download_nifty_data()
 
-# Read watchlist
-stocks = load_watchlist()
+# Cheking 
+if SCAN_MODE == "watchlist":
+    stocks = load_watchlist()
+
+elif SCAN_MODE == "nifty500":
+    stocks = load_nifty500()
+    print(f"Stocks Loaded: {len(stocks)}")
+
+else:
+    raise ValueError(f"Invalid SCAN_MODE: {SCAN_MODE}")
 
 market_data = download_market_data(stocks)
 
+results = []
+
 for stock in stocks:
+   
     try:
         data = market_data[stock]
 
@@ -93,8 +109,7 @@ for stock in stocks:
             "nearest_resistance": nearest_resistance,
             "resistance_distance": resistance_distance,}
         
-        from scoring import calculate_score
-        from scoring import get_rating
+        
         score_result = calculate_score(scan_results)
         score = score_result["score"]
         rating = get_rating(score)
@@ -103,7 +118,7 @@ for stock in stocks:
         
         
         #Printing Report
-        print_report(
+        stock_result = build_report(
         stock,
         latest,
         score,
@@ -122,16 +137,35 @@ for stock in stocks:
         positive_signals,
         negative_signals,
         rating,
-         score_result["trend_score"],
+        score_result["trend_score"],
         score_result["momentum_score"],
         score_result["volume_score"],
         score_result["structure_score"],
-        score_result["trade_quality_score"],
-        )
+        score_result["trade_quality_score"],)
+
+        results.append(stock_result)
 
 
 
     except Exception as e:
         print(e)
+        print(f"{stock} -> {e}")
         print(f"⚠️ Could not scan {stock}. Skipping...")
         continue
+
+ranked_results = sort_results(results)
+
+if OUTPUT_MODE == "full":
+
+    for stock_result in ranked_results:
+        print_report(stock_result)
+
+elif OUTPUT_MODE == "summary":
+
+    print_top_setups(ranked_results)
+    print()
+    print_market_summary(ranked_results)
+
+else:
+
+    raise ValueError(f"Invalid OUTPUT_MODE: {OUTPUT_MODE}")

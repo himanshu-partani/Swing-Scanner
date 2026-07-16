@@ -43,3 +43,25 @@ SCORING_WEIGHTS = {
     "support": 10,
     "upside": 10,
 }
+
+# ==========================
+# Scan Configuration
+# ==========================
+
+SCAN_MODE = "nifty500"
+
+# Options:
+# "watchlist"
+# "nifty500"
+
+# ==========================
+# Output Configuration
+# ==========================
+
+OUTPUT_MODE = "summary"
+
+# Options:
+# "full"
+# "summary"
+
+

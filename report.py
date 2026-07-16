@@ -1,4 +1,4 @@
-def print_report(
+def build_report(
     stock,
     latest,
     score,
@@ -23,6 +23,65 @@ def print_report(
     structure_score,
     trade_quality_score,
 ):
+    return {
+        "ticker": stock,
+
+        "score": score,
+        "rating": rating,
+
+        "latest": latest,
+
+        "category_scores": {
+            "trend": trend_score,
+            "momentum": momentum_score,
+            "volume": volume_score,
+            "structure": structure_score,
+            "trade_quality": trade_quality_score,
+        },
+
+        "trade": {
+            "support": nearest_support,
+            "resistance": nearest_resistance,
+        },
+
+        "signals": {
+            "positive": positive_signals,
+            "negative": negative_signals,
+        },
+
+        "analysis": {
+            "relative_strength": rs,
+            "previous_3_month_high": previous_3_month_high,
+            "previous_52_week_high": previous_52_week_high,
+            "todays_volume": todays_volume,
+            "average_volume": avg_volume,
+            "relative_volume": relative_volume,
+            "consolidation_percent": consolidation_percent,
+            "atr_percent": atr_percent,
+            "support_distance": support_distance,
+            "resistance_distance": resistance_distance,
+        },
+    }
+
+def print_report(stock_result):
+        
+        stock = stock_result["ticker"]
+        latest = stock_result["latest"]
+        score = stock_result["score"]
+        rating = stock_result["rating"]
+        category_scores = stock_result["category_scores"]
+        trade = stock_result["trade"]
+        signals = stock_result["signals"]
+        analysis = stock_result["analysis"]
+        trend_score = category_scores["trend"]
+        momentum_score = category_scores["momentum"]
+        volume_score = category_scores["volume"]
+        structure_score = category_scores["structure"]
+        trade_quality_score = category_scores["trade_quality"]
+        nearest_support = trade["support"]
+        nearest_resistance = trade["resistance"]
+        positive_signals = signals["positive"]
+        negative_signals = signals["negative"]
         
         # -------------------- OUTPUT --------------------
 
@@ -204,3 +263,66 @@ def print_report(
         print()
         print("=" * 50)
         print()
+
+def print_top_setups(results, top_n=10):
+
+    print("=" * 60)
+    print(f"{'TOP 10 SWING SETUPS':^60}")
+    print("=" * 60)
+    print()
+
+    print(f"{'Rank':<6}{'Ticker':<20}{'Score':<10}{'Rating'}")
+    print("-" * 60)
+  
+
+    for rank, stock in enumerate(results[:top_n], start=1):
+        print(
+            f"{rank:<6}"
+            f"{stock['ticker']:<20}"
+            f"{stock['score']:<10}"
+            f"{stock['rating']}"
+        )
+
+    print()
+
+
+
+def print_market_summary(results):
+
+    elite = 0
+    strong = 0
+    watchlist = 0
+    average = 0
+    avoid = 0
+
+    for stock in results:
+
+        rating = stock["rating"]
+
+        if "Elite" in rating:
+            elite += 1
+
+        elif "Strong" in rating:
+            strong += 1
+
+        elif "Watchlist" in rating:
+            watchlist += 1
+
+        elif "Average" in rating:
+            average += 1
+
+        elif "Avoid" in rating:
+            avoid += 1
+
+    print("=" * 60)
+    print(f"{'MARKET SUMMARY':^60}")
+    print("=" * 60)
+    print()
+
+    print(f"{'Stocks Scanned':25}: {len(results)}")
+    print(f"{'Elite Setups':25}: {elite}")
+    print(f"{'Strong Setups':25}: {strong}")
+    print(f"{'Watchlist':25}: {watchlist}")
+    print(f"{'Average':25}: {average}")
+    print(f"{'Avoid':25}: {avoid}")
+    print()

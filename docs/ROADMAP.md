@@ -1,354 +1,368 @@
 # 🛣️ Swing Scanner Roadmap
 
-> Development roadmap for the Swing Scanner project.
-
-This roadmap outlines the project's evolution from a basic stock scanner into a complete swing trading platform. Features are organized by version to clearly show what has been completed and what is planned for future releases.
+> **Future development roadmap following the release of Version 3.2**
 
 ---
 
-# ✅ Version History
+# Roadmap Philosophy
 
-## Version 1.0 — Foundation
+Version **3.2** established the architectural foundation of Swing Scanner.
 
-**Status:** ✅ Completed
+Future versions will focus on expanding functionality while preserving the clean, modular architecture introduced in this release.
 
-### Goals
+Development priorities are guided by three principles:
 
-- Learn Python fundamentals
-- Download stock market data
-- Build the first working scanner
-
-### Features
-
-- ✅ Yahoo Finance integration
-- ✅ Multi-stock scanning
-- ✅ MA20
-- ✅ MA50
-- ✅ Professional console output
-- ✅ Basic project structure
+* Build practical trading tools.
+* Maintain clean software architecture.
+* Learn professional software engineering through real-world development.
 
 ---
 
-## Version 1.2 — Technical Indicators
+# Current Version
 
-**Status:** ✅ Completed
+## ✅ Version 3.2
 
-### Goals
+Status:
 
-Expand the scanner with additional technical analysis tools.
+**Released**
 
-### Features
+Major achievements:
 
-- ✅ RSI
-- ✅ ATR
-- ✅ Risk management calculations
-- ✅ Modular indicator functions
+* Modular architecture
+* Centralized configuration
+* Batch download engine
+* Report object architecture
+* Decision engine
+* Ranking engine
+* Multiple scan modes
+* Multiple output modes
+* Professional documentation
 
----
-
-## Version 2.0 — Watchlist Management
-
-**Status:** ✅ Completed
-
-### Goals
-
-Separate configuration from source code.
-
-### Features
-
-- ✅ CSV watchlist
-- ✅ Dynamic ticker loading
-- ✅ Cleaner project organization
+This release serves as the long-term foundation for future development.
 
 ---
 
-## Version 2.1 — Relative Strength Analysis
+# Version 3.3 — Reporting & Usability
 
-**Status:** ✅ Completed
+## Goal
 
-### Goals
-
-Improve stock selection using comparative strength.
-
-### Features
-
-- ✅ Relative Strength vs NIFTY
-- ✅ Relative Volume
-- ✅ Previous 3-Month High detection
-
----
-
-## Version 2.2 — Momentum Analysis
-
-**Status:** ✅ Completed
-
-### Goals
-
-Add momentum-based indicators.
-
-### Features
-
-- ✅ MACD
-- ✅ Signal Line
-- ✅ Histogram
-- ✅ Momentum confirmation
-
----
-
-## Version 2.3 — Consolidation Detection
-
-**Status:** ✅ Completed
-
-### Goals
-
-Identify quality breakout setups.
-
-### Features
-
-- ✅ Tight Consolidation
-- ✅ ATR Percentage
-- ✅ Range Percentage
-- ✅ Improved scoring system
-
----
-
-## Version 3.0 — Market Structure Engine
-
-**Status:** ✅ Completed
-
-### Goals
-
-Introduce support and resistance analysis.
-
-### Features
-
-- ✅ Swing High Detection
-- ✅ Swing Low Detection
-- ✅ Zone Grouping
-- ✅ Zone Filtering
-- ✅ Zone Strength Classification
-- ✅ Distance to Support
-- ✅ Distance to Resistance
-- ✅ Dedicated `market_structure.py`
-
----
-
-## Version 3.1 — Stability & Documentation
-
-**Status:** ✅ Completed
-
-### Goals
-
-Improve overall project quality without changing the core trading logic.
-
-### Features
-
-- ✅ Professional README
-- ✅ Updated Roadmap
-- ✅ Project Status documentation
-- ✅ Learning Log
-- ✅ Repository cleanup
-- ✅ Documentation synchronization
-- ✅ Improved maintainability
-
----
-
-# 🚧 Future Roadmap
-
-## Version 3.2 — Reporting
-
-**Status:** 🟡 Planned
-
-### Goals
-
-Generate reusable scan reports.
+Improve usability and make scan results easier to analyze outside the terminal.
 
 ### Planned Features
 
-- CSV scan reports
-- Automatic sorting by score
-- Cleaner summary output
-- Export-ready results
+### CSV Report Export
+
+Export scan results into CSV files containing:
+
+* Ranking
+* Score
+* Rating
+* Category scores
+* Trade metrics
+* Key signals
 
 ---
 
-## Version 4.0 — Large-Scale Scanner
+### Configurable Top Results
 
-**Status:** 🟡 Planned
+Allow users to configure:
 
-### Goals
+* Top 5
+* Top 10
+* Top 20
+* Top 50
 
-Expand scanning capabilities.
+without modifying application logic.
+
+---
+
+### Enhanced Console Output
+
+Improve readability by:
+
+* Better spacing
+* Cleaner section formatting
+* Optional colorized output
+* Improved summary layout
+
+---
+
+### Additional Configuration Options
+
+Expand `config.py` to support more user-configurable behavior without requiring code changes.
+
+---
+
+# Version 3.4 — Portfolio Tools
+
+## Goal
+
+Expand beyond stock scanning into portfolio management.
 
 ### Planned Features
 
-- NIFTY 500 scanner
-- Faster data processing
-- Improved performance
-- Stock ranking system
-- Advanced filtering options
+* Portfolio Scanner
+* Portfolio Watchlists
+* Portfolio Performance Summary
+* Holdings Analysis
+* Sector Allocation
+* Portfolio Risk Summary
 
 ---
 
-## Version 5.0 — Dashboard
+# Version 4.0 — Visualization
 
-**Status:** 🟡 Planned
+## Goal
 
-### Goals
-
-Provide a graphical user interface.
+Introduce graphical analysis.
 
 ### Planned Features
 
-- Streamlit dashboard
-- Interactive charts
-- Searchable watchlist
-- Filter controls
-- Better visualization
+### Interactive Charts
+
+* Candlestick charts
+* Moving averages
+* RSI
+* MACD
+* Support & resistance zones
 
 ---
 
-## Version 6.0 — Portfolio Tools
+### Streamlit Dashboard
 
-**Status:** 🟡 Planned
+Interactive interface featuring:
 
-### Goals
-
-Expand beyond stock screening.
-
-### Planned Features
-
-- Portfolio scanner
-- Position tracking
-- Risk analysis
-- Portfolio statistics
-- Performance summaries
+* Stock search
+* Scanner controls
+* Rankings
+* Charts
+* Configuration panel
+* Summary dashboard
 
 ---
 
-## Version 7.0 — Automation
+### Historical Trade Visualization
 
-**Status:** 🟡 Planned
+Display:
 
-### Goals
+* Entry
+* Stop Loss
+* Target
+* Support
+* Resistance
+
+directly on price charts.
+
+---
+
+# Version 4.5 — Automation
+
+## Goal
 
 Reduce manual work.
 
 ### Planned Features
 
-- Scheduled scans
-- Telegram alerts
-- Email notifications
-- Daily reports
-- Automated watchlists
+* Scheduled scans
+* Automatic CSV generation
+* Daily scan summaries
+* Email reports
+* Telegram notifications
+* Watchlist monitoring
 
 ---
 
-## Version 8.0 — AI Features
+# Version 5.0 — Intelligence
 
-**Status:** 🟡 Planned
+## Goal
 
-### Goals
-
-Add intelligent trade analysis.
+Introduce intelligent decision support.
 
 ### Planned Features
 
-- AI trade explanations
-- Trade quality summaries
-- Pattern interpretation
-- Natural language insights
-- Smarter screening assistance
+### AI Trade Explanations
+
+Generate natural-language explanations describing:
+
+* Why a stock scored highly
+* Strengths
+* Weaknesses
+* Risk factors
 
 ---
 
-## Version 9.0 — Backtesting
+### Pattern Recognition
 
-**Status:** 🟡 Planned
+Detect patterns such as:
 
-### Goals
+* Flags
+* Pennants
+* Triangles
+* Double Tops
+* Double Bottoms
 
-Evaluate strategy performance.
+---
+
+### Confidence Analysis
+
+Estimate confidence based on agreement between multiple technical signals.
+
+---
+
+# Version 5.5 — Strategy Development
+
+## Goal
+
+Evaluate trading strategies objectively.
 
 ### Planned Features
 
-- Historical backtesting
-- Win-rate analysis
-- Drawdown statistics
-- Strategy comparison
-- Performance reports
+* Historical backtesting
+* Performance metrics
+* Win rate analysis
+* Drawdown analysis
+* Strategy comparison
+* Parameter optimization
 
 ---
 
-## Version 10.0 — Complete Trading Platform
+# Version 6.0 — Professional Platform
 
-**Status:** 🔵 Long-Term Vision
+## Goal
 
-### Goals
-
-Transform Swing Scanner into a comprehensive swing trading platform.
+Transform Swing Scanner into a complete trading toolkit.
 
 ### Planned Features
 
-- Advanced analytics
-- Portfolio management
-- Interactive dashboards
-- Strategy library
-- AI-assisted decision support
-- Performance optimization
-- Production-ready architecture
+### Broker Integration
+
+* Order placement
+* Position tracking
+* Live portfolio updates
 
 ---
 
-# 🎯 Long-Term Vision
+### Database Support
 
-The objective of Swing Scanner is not to become an automated trading bot, but to provide a fast, transparent, and reliable decision-support tool for swing traders.
+Replace CSV files with a structured database.
 
-The project will continue to emphasize:
+Potential technologies:
 
-- Clean software architecture
-- Modular design
-- Readable code
-- Transparent scoring logic
-- Practical technical analysis
-- Continuous learning and improvement
+* SQLite
+* PostgreSQL
 
 ---
 
-# 📌 Development Principles
+### User Profiles
 
-Every future release will follow these guiding principles:
+Support multiple users with independent:
 
-- Build incrementally.
-- Keep modules focused on a single responsibility.
-- Prefer clarity over unnecessary complexity.
-- Refactor when it improves maintainability.
-- Document every major release.
-- Add features only when they provide meaningful value.
+* Watchlists
+* Configurations
+* Portfolios
 
 ---
 
-# 📈 Roadmap Summary
+### Cloud Deployment
 
-| Version | Focus | Status |
-|---------|-------|--------|
-| 1.0 | Foundation | ✅ Complete |
-| 1.2 | Technical Indicators | ✅ Complete |
-| 2.0 | Watchlist Management | ✅ Complete |
-| 2.1 | Relative Strength | ✅ Complete |
-| 2.2 | Momentum Analysis | ✅ Complete |
-| 2.3 | Consolidation Detection | ✅ Complete |
-| 3.0 | Market Structure Engine | ✅ Complete |
-| 3.1 | Stability & Documentation | ✅ Complete |
-| 3.2 | Reporting | 🟡 Planned |
-| 4.0 | Large-Scale Scanner | 🟡 Planned |
-| 5.0 | Dashboard | 🟡 Planned |
-| 6.0 | Portfolio Tools | 🟡 Planned |
-| 7.0 | Automation | 🟡 Planned |
-| 8.0 | AI Features | 🟡 Planned |
-| 9.0 | Backtesting | 🟡 Planned |
-| 10.0 | Complete Trading Platform | 🔵 Vision |
+Deploy the application for remote access and continuous scanning.
+
+Potential platforms:
+
+* Docker
+* Railway
+* Render
+* AWS
+* Azure
 
 ---
 
-**The roadmap is a living document and will evolve as the project grows, new ideas emerge, and new skills are learned. 🚀**
+# Long-Term Vision
+
+The long-term objective is to evolve Swing Scanner from a command-line scanner into a comprehensive swing trading platform.
+
+The platform should eventually provide:
+
+* Market scanning
+* Portfolio analysis
+* Strategy testing
+* Visualization
+* Automation
+* AI-assisted insights
+* Professional reporting
+
+while continuing to follow clean software engineering practices.
+
+---
+
+# Development Priorities
+
+Future work will continue to follow this order of importance:
+
+1. Maintainability
+2. Code Quality
+3. Reliability
+4. Performance
+5. User Experience
+6. New Features
+
+Architecture will always take priority over feature count.
+
+---
+
+# Guiding Principles
+
+Every new version should strive to:
+
+* Preserve modular architecture.
+* Avoid unnecessary complexity.
+* Minimize code duplication.
+* Improve readability.
+* Keep configuration centralized.
+* Expand functionality without compromising maintainability.
+
+---
+
+# Success Metrics
+
+Future releases should aim to improve one or more of the following:
+
+* Scan performance
+* Code quality
+* User experience
+* Trading usefulness
+* Documentation
+* Software engineering practices
+
+rather than simply increasing the number of features.
+
+---
+
+# Roadmap Status
+
+| Version |   Status   |
+| ------- | :--------: |
+| 3.2     | ✅ Released |
+| 3.3     | 📋 Planned |
+| 3.4     | 📋 Planned |
+| 4.0     | 📋 Planned |
+| 4.5     |  🔮 Future |
+| 5.0     |  🔮 Future |
+| 5.5     |  🔮 Future |
+| 6.0     |  🔮 Vision |
+
+---
+
+# Closing Note
+
+Version **3.2** marks the completion of the project's first major architectural milestone.
+
+Future releases will build on this foundation by adding new capabilities while maintaining the same emphasis on clean design, modularity, and continuous learning.
+
+The roadmap is intentionally ambitious. It serves as a guide rather than a strict schedule, allowing the project to evolve naturally while remaining focused on long-term quality.
+
+---
+
+**Current Stable Release:** **Swing Scanner v3.2**
+
+*"Build software that is easy to improve, and future features become much easier to add."*

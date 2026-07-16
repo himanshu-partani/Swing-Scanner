@@ -1,10 +1,3 @@
-from config import (
-    LOOKBACK_3_MONTHS,
-    VOLUME_MULTIPLIER,
-    CONSOLIDATION_MAX_RANGE_PERCENT,
-    CONSOLIDATION_MAX_ATR_PERCENT,
-)
-
 def calculate_rsi(data):
 
     data["delta"] = data["Close"].diff()
