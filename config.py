@@ -29,3 +29,17 @@ MIN_RESISTANCE_TOUCHES = 2
 WATCHLIST_FILE = "data/stocks.csv"
 MARKET_INDEX = "^NSEI"
 DOWNLOAD_PERIOD = "13mo"
+
+SCORING_WEIGHTS = {
+    "ma20": 5,
+    "ma50": 5,
+    "three_month_high": 10,
+    "high_52_week": 15,
+    "relative_volume": 10,
+    "rsi": 5,
+    "macd": 5,
+    "relative_strength": 15,
+    "consolidation": 10,
+    "support": 10,
+    "upside": 10,
+}

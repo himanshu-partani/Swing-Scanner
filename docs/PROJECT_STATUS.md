@@ -1,136 +1,265 @@
-# PROJECT STATUS
+# 📊 Swing Scanner Project Status
 
-## Project
+> Current development status of the Swing Scanner project.
 
-**Swing Scanner**
+**Project Version:** v3.1  
+**Status:** ✅ Stable Release  
+**Language:** Python  
+**Architecture:** Modular
 
-## Current Version
+---
 
-**Version 3.0 -- Complete**
+# 📌 Project Overview
 
-------------------------------------------------------------------------
+Swing Scanner is a Python-based swing trading scanner designed for the Indian stock market.
 
-# Project Objective
+The project automates technical analysis by downloading market data, calculating multiple indicators, analyzing market structure, and assigning a rule-based score to identify strong swing trading opportunities.
 
-Swing Scanner is a modular Python application that scans NSE stocks for
-swing trading opportunities using technical indicators, market structure
-analysis and risk management.
+Version 3.1 focuses on stability, maintainability, and professional project documentation while preserving the core scanning logic introduced in earlier releases.
 
-The project was built while learning Python from scratch and has
-gradually evolved into a structured software engineering project.
+---
 
-------------------------------------------------------------------------
+# ✅ Current Capabilities
 
-# Current Architecture
+## Market Data
 
-## scanner.py
+- ✅ Download historical stock data
+- ✅ Multi-stock scanning
+- ✅ CSV-based watchlist
+- ✅ NIFTY benchmark data for Relative Strength
 
-Responsible for: - Calling data_loader - Calling indicator
-functions - Calling market structure functions - Calculating scores -
-Generating trading signals - Printing professional reports
+---
 
-## indicators.py
+## Technical Indicators
 
-Contains reusable indicator functions.
+- ✅ 20-Day Moving Average (MA20)
+- ✅ 50-Day Moving Average (MA50)
+- ✅ Relative Strength Index (RSI)
+- ✅ Average True Range (ATR)
+- ✅ MACD
+- ✅ Relative Strength vs NIFTY
+- ✅ Relative Volume
+- ✅ Previous 3-Month High
+- ✅ 52-Week High Detection
+- ✅ Tight Consolidation Detection
 
-Implemented: - RSI - ATR - MACD - Relative Strength vs Nifty - Relative
-Volume - Previous 52 Week High - Consolidation Detection
+---
 
-## market_structure.py
+## Market Structure Engine
 
-Contains every price-action based algorithm.
+- ✅ Swing High Detection
+- ✅ Swing Low Detection
+- ✅ Price Zone Grouping
+- ✅ Zone Filtering
+- ✅ Zone Strength Classification
+- ✅ Support Detection
+- ✅ Resistance Detection
+- ✅ Distance to Support
+- ✅ Distance to Resistance
 
-Implemented: - Swing Point Detection - Zone Grouping - Zone Filtering -
-Nearest Support Detection - Nearest Resistance Detection - Zone Strength
-Classification - Distance to Support - Distance to Resistance
+---
 
-------------------------------------------------------------------------
+## Scanner Features
 
-# Current Features
+- ✅ Rule-based stock evaluation
+- ✅ Technical signal analysis
+- ✅ Market structure integration
+- ✅ Professional console output
+- ✅ Multi-condition scoring system
+- ✅ Modular architecture
 
-## Data
+---
 
--   Live Yahoo Finance Data
--   CSV Watchlist
--   Multi Stock Scanner
+# 🏗 Current Architecture
 
-## Trend
+```
+scanner.py
+│
+├── Downloads market data
+├── Calls indicator calculations
+├── Calls market structure engine
+├── Evaluates trading rules
+├── Calculates score
+└── Prints final report
 
--   20 Day Moving Average
--   50 Day Moving Average
+indicators.py
+│
+├── Moving Averages
+├── RSI
+├── ATR
+├── MACD
+├── Relative Strength
+├── Relative Volume
+├── 52 Week High
+└── Consolidation
 
-## Momentum
+market_structure.py
+│
+├── Swing Detection
+├── Zone Grouping
+├── Zone Filtering
+├── Zone Strength
+└── Nearest Support & Resistance
+```
 
--   RSI
--   MACD
+---
 
-## Relative Performance
+# 📂 Project Structure
 
--   Relative Strength
--   Relative Volume
+```
+Swing-Scanner/
+│
+├── data/
+│   └── stocks.csv
+│
+├── docs/
+│   ├── LEARNING_LOG.md
+│   ├── PROJECT_STATUS.md
+│   └── ROADMAP.md
+│
+├── indicators.py
+├── market_structure.py
+├── scanner.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
 
-## Breakout Analysis
+---
 
--   Previous 3 Month High
--   Previous 52 Week High
+# 📈 Current Scoring System
 
-## Volatility
+The scanner evaluates each stock using a rule-based scoring model.
 
--   ATR
+Typical bullish confirmations include:
 
-## Consolidation
+- ✅ Above MA20
+- ✅ Above MA50
+- ✅ RSI in bullish range
+- ✅ MACD Bullish
+- ✅ Positive Relative Strength
+- ✅ Relative Volume Breakout
+- ✅ Previous 3-Month High
+- ✅ Near 52-Week High
+- ✅ Tight Consolidation
+- ✅ Market Structure Confirmation
 
--   Range Percentage
--   ATR Percentage
+Higher scores represent stronger swing trading setups.
 
-## Market Structure
+---
 
--   Swing Points
--   Support & Resistance Zones
--   Zone Strength
--   Distance Calculations
+# 🧪 Testing Status
 
-## Risk Management
+| Module | Status |
+|---------|--------|
+| Data Download | ✅ Tested |
+| Moving Averages | ✅ Tested |
+| RSI | ✅ Tested |
+| ATR | ✅ Tested |
+| MACD | ✅ Tested |
+| Relative Strength | ✅ Tested |
+| Relative Volume | ✅ Tested |
+| Previous 3-Month High | ✅ Tested |
+| 52-Week High | ✅ Tested |
+| Consolidation Detection | ✅ Tested |
+| Swing Point Detection | ✅ Tested |
+| Zone Grouping | ✅ Tested |
+| Zone Filtering | ✅ Tested |
+| Support & Resistance | ✅ Tested |
+| Console Output | ✅ Tested |
 
--   Stop Loss
--   Target
--   Risk
--   Reward
--   Reward : Risk
+---
 
-## Scanner
+# 🎯 Version 3.1 Highlights
 
--   Trading Signals
--   Professional Console Output
--   11 Point Scoring System
+Version 3.1 is a refinement release focused on improving the overall quality of the project.
 
-------------------------------------------------------------------------
+### Improvements
 
-# Testing Summary
+- Professional project documentation
+- Cleaner repository organization
+- Updated documentation across all project files
+- Improved maintainability
+- Consistent project structure
+- Refined console output formatting
+- Better developer experience
 
-Version 2.3 was tested on: - Large Cap Stocks - Banking Stocks - IT
-Stocks - Defence Stocks - Momentum Stocks - Mid Cap Stocks - Weak /
-Downtrend Stocks
+No major trading logic was changed in this release.
 
-Results: - Stable execution - No crashes - Correct support/resistance
-detection - Correct distance calculations - Logical scoring
+---
 
-------------------------------------------------------------------------
+# 🚧 Known Limitations
 
-# Repository Status
+Current version does **not** yet include:
 
-Current Release: **Version 3.0**
+- Portfolio tracking
+- Historical backtesting
+- Automatic stock ranking
+- CSV report generation
+- Interactive charts
+- Streamlit dashboard
+- Telegram alerts
+- AI trade explanations
+- Portfolio analytics
+- Database storage
 
-Status: ✅ Stable
+These features are planned for future versions.
 
-Ready for: - Version 3.1 Professional Weighted Scoring Engine - Ranking System - CSV Reports
+---
 
-------------------------------------------------------------------------
+# 🛣 Development Progress
 
-# Next Milestone
+| Area | Status |
+|------|--------|
+| Core Scanner | ✅ Complete |
+| Technical Indicators | ✅ Complete |
+| Market Structure Engine | ✅ Complete |
+| Scoring System | ✅ Complete |
+| Documentation | ✅ Complete |
+| Repository Organization | ✅ Complete |
+| Performance Optimization | 🟡 Planned |
+| Dashboard | 🟡 Planned |
+| Portfolio Tools | 🟡 Planned |
+| AI Features | 🟡 Planned |
+| Backtesting | 🟡 Planned |
 
-Version 3
+---
 
-Primary focus: - Batch Download System - Nifty 500 Scanner -
-Professional Scoring Engine - Ranking System - CSV Reports - Performance
-Optimisation
+# 🔮 Next Development Priorities
+
+1. Automatic stock ranking
+2. CSV report generation
+3. NIFTY 500 scanning
+4. Performance optimization
+5. Streamlit dashboard
+6. Portfolio scanner
+7. Historical backtesting
+8. Telegram alerts
+9. AI-assisted trade analysis
+10. Portfolio analytics
+
+---
+
+# 📊 Overall Project Status
+
+| Category | Status |
+|----------|--------|
+| Core Functionality | ✅ Stable |
+| Architecture | ✅ Modular |
+| Documentation | ✅ Complete |
+| Code Quality | ✅ Clean |
+| Maintainability | ✅ High |
+| Scalability | ✅ Good |
+| Production Ready | 🟡 Educational / Personal Project |
+
+---
+
+# 🎯 Current Focus
+
+The project has a solid technical foundation with modular architecture, a comprehensive set of technical indicators, and a functional market structure engine.
+
+Future development will emphasize scalability, automation, visualization, and advanced trading analytics rather than adding unnecessary complexity to the existing core.
+
+---
+
+**Status Summary:** ✅ Version 3.1 Complete and Stable
