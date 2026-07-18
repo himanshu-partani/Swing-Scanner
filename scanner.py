@@ -1,5 +1,4 @@
 from scoring import calculate_score
-from scoring import get_rating
 from report import build_report, print_report , print_market_summary ,print_top_setups
 from ranking import sort_results
 from config import (SCAN_MODE , OUTPUT_MODE )
@@ -18,7 +17,8 @@ from indicators import (
     calculate_52_week_high,
     calculate_relative_volume,
     calculate_consolidation,
-    
+    calculate_adx,
+    calculate_obv,
 )
 from market_structure import(
     find_swing_points,
@@ -35,6 +35,7 @@ from config import (
     CONSOLIDATION_MAX_ATR_PERCENT,
     MIN_SUPPORT_TOUCHES,
     MIN_RESISTANCE_TOUCHES,
+    SWING_WINDOW,
 )
 
 # Download Nifty data once
@@ -65,11 +66,11 @@ for stock in stocks:
             continue
 
         current_price = float(data["Close"].iloc[-1])
-        current_price = float(data["Close"].iloc[-1])
 
         # Moving Averages
         data["ma20"] = data["Close"].rolling(20).mean()
         data["ma50"] = data["Close"].rolling(50).mean()
+        data["ma200"] = data["Close"].rolling(200).mean()
         data["vol20"] = data["Volume"].rolling(20).mean()
 
         # Indicators
@@ -80,9 +81,11 @@ for stock in stocks:
         previous_52_week_high = calculate_52_week_high(data)
         relative_volume = calculate_relative_volume(data)
         consolidation_percent , atr_percent = calculate_consolidation(data)
+        data = calculate_adx(data)
+        data = calculate_obv(data)
 
         #Market Structure
-        swing_lows , swing_highs = find_swing_points(data ,window = 5)
+        swing_lows , swing_highs = find_swing_points(data ,window = SWING_WINDOW)
         support_zones = group_swing_points(swing_lows)
         resistance_zones = group_swing_points(swing_highs)
         support_zones = filter_zones(support_zones,MIN_SUPPORT_TOUCHES)
@@ -94,54 +97,47 @@ for stock in stocks:
         avg_volume = latest["vol20"]
         todays_volume = latest["Volume"]
         previous_3_month_high = data["High"][-LOOKBACK_3_MONTHS:-1].max()
-        score = 0
         
         scan_results = {
-            "latest": latest,
-            "previous_3_month_high": previous_3_month_high,
-            "previous_52_week_high": previous_52_week_high,
-            "relative_volume": relative_volume,
-            "relative_strength": rs,
-            "consolidation_percent": consolidation_percent,
-            "atr_percent": atr_percent,
-            "nearest_support": nearest_support,
-            "support_distance": support_distance,
-            "nearest_resistance": nearest_resistance,
-            "resistance_distance": resistance_distance,}
+        "close": latest["Close"],
+        "sma20": latest["ma20"],
+        "sma50": latest["ma50"],
+        "sma200": latest["ma200"],
+        "adx": latest["adx"],
+        "high_52w": previous_52_week_high,
+        "market_structure": ( nearest_support is not None and
+        nearest_resistance is not None),
+
+        "obv_accumulation": latest["obv"] > data["obv"].iloc[-2],
+        "macd_histogram": latest["macd_histogram"],
+        "rsi": latest["rsi"],
+        "atr_percent": atr_percent,
+        }
         
         
         score_result = calculate_score(scan_results)
         score = score_result["score"]
-        rating = get_rating(score)
-        positive_signals = score_result["positive_signals"]
-        negative_signals = score_result["negative_signals"]
-        
+        grade = score_result["grade"]
+        percentage = score_result["percentage"]
+        breakdown = score_result["breakdown"]
         
         #Printing Report
         stock_result = build_report(
-        stock,
-        latest,
-        score,
-        rs,
-        previous_3_month_high,
-        previous_52_week_high,
-        todays_volume,
-        avg_volume,
-        relative_volume,
-        consolidation_percent,
-        atr_percent,
-        nearest_support,
-        nearest_resistance,
-        support_distance,
-        resistance_distance,
-        positive_signals,
-        negative_signals,
-        rating,
-        score_result["trend_score"],
-        score_result["momentum_score"],
-        score_result["volume_score"],
-        score_result["structure_score"],
-        score_result["trade_quality_score"],)
+        stock=stock,
+        latest=latest,
+        score_result=score_result,
+        relative_strength=rs,
+        previous_3_month_high=previous_3_month_high,
+        previous_52_week_high=previous_52_week_high,
+        todays_volume=todays_volume,
+        avg_volume=avg_volume,
+        relative_volume=relative_volume,
+        consolidation_percent=consolidation_percent,
+        atr_percent=atr_percent,
+        nearest_support=nearest_support,
+        nearest_resistance=nearest_resistance,
+        support_distance=support_distance,
+        resistance_distance=resistance_distance,)
 
         results.append(stock_result)
 
@@ -169,3 +165,8 @@ elif OUTPUT_MODE == "summary":
 else:
 
     raise ValueError(f"Invalid OUTPUT_MODE: {OUTPUT_MODE}")
+
+print(f"ADX      : {latest['adx']:.2f}")
+print(f"+DI      : {latest['plus_di']:.2f}")
+print(f"-DI      : {latest['minus_di']:.2f}")
+print(f"OBV      : {latest['obv']:,.0f}")

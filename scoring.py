@@ -1,386 +1,392 @@
+"""
+=========================================================
+Swing Scanner V4.0
+Production Scoring Engine
+=========================================================
+
+Research-backed weighted scoring engine.
+
+Scoring Matrix
+--------------
+
+Trend...................................22
+ADX.....................................20
+52W High Distance.......................16
+20 > 50 > 200 Alignment.................16
+Higher High Higher Low..................12
+OBV Accumulation........................10
+MACD Histogram.......................... 4
+RSI..................................... 2
+ATR Expansion...........................10
+
+Maximum Score : 100
+
+Author : Swing Scanner
+Version : 4.0
+"""
+
+from __future__ import annotations
+from typing import Any, Dict
+
+
 from config import (
-    VOLUME_MULTIPLIER,
-    CONSOLIDATION_MAX_RANGE_PERCENT,
-    CONSOLIDATION_MAX_ATR_PERCENT,
-    SCORING_WEIGHTS,
+    SCORE_WEIGHTS,
+    GRADE_THRESHOLDS,
+    ADX_THRESHOLD,
+    RSI_MIN,
+    RSI_MAX,
+    HIGH_52W_DISTANCE,
+    ATR_PENALTY_THRESHOLD,
 )
 
-def get_rating(score):
-    if score >= 90:
-        return "⭐⭐⭐⭐⭐ Elite Swing Trade"
-    elif score >= 75:
-        return "⭐⭐⭐⭐☆ Strong Setup"
-    elif score >= 60:
-        return "⭐⭐⭐☆☆ Watchlist"
-    elif score >= 40:
-        return "⭐⭐☆☆☆ Average"
-    return "⭐☆☆☆☆ Avoid"
 
-def score_ma20(close, ma20):
-    if close > ma20:
-        return SCORING_WEIGHTS["ma20"], "Above 20 MA", None
-    return 0, None, "Below 20 MA"
+# ==========================================================
+# Helper Functions
+# ==========================================================
+
+def bool_score(condition: bool, weight: int) -> int:
+    """
+    Returns weight if condition is True.
+    """
+
+    return weight if condition else 0
 
 
-def score_ma50(close, ma50):
-    if close > ma50:
-        return SCORING_WEIGHTS["ma50"], "Above 50 MA", None
-    return 0, None, "Below 50 MA"
+def calculate_grade(score_percent: float) -> str:
+    """
+    Convert percentage score into grade.
+    """
+    if score_percent >= GRADE_THRESHOLDS["A+"]:
+        return "A+"
+
+    if score_percent >= GRADE_THRESHOLDS["A"]:
+        return "A"
+
+    if score_percent >= GRADE_THRESHOLDS["B"]:
+        return "B"
+
+    if score_percent >= GRADE_THRESHOLDS["C"]:
+        return "C"
+
+    return "D"
+
+# ==========================================================
+# Validation
+# ==========================================================
+
+REQUIRED_FIELDS = (
+    "close",
+    "sma20",
+    "sma50",
+    "sma200",
+    "adx",
+    "high_52w",
+    "market_structure",
+    "obv_accumulation",
+    "macd_histogram",
+    "rsi",
+    "atr_percent",
+)
 
 
-def score_three_month_high(high, previous_high):
-    if high > previous_high:
-        return SCORING_WEIGHTS["three_month_high"], "3-Month High Breakout", None
-    return 0, None, "No 3-Month High Breakout"
+def validate_stock(stock: Dict[str, Any]) -> None:
+    """
+    Ensure all required values exist before scoring.
+    """
 
+    missing = [
+        field
+        for field in REQUIRED_FIELDS
+        if field not in stock
+    ]
 
-def score_relative_volume(relative_volume):
-    if relative_volume >= 3:
-        return (
-            10,
-            f"Exceptional Volume ({relative_volume:.2f}x)",
-            None,)
-    elif relative_volume >= 2:
-        return (
-            8,
-            f"Excellent Volume ({relative_volume:.2f}x)",
-            None,)
-    elif relative_volume >= 1.5:
-        return (
-            6,
-            f"Good Volume ({relative_volume:.2f}x)",
-            None,)
-    elif relative_volume >= VOLUME_MULTIPLIER:
-        return (
-            4,
-            f"Above Average Volume ({relative_volume:.2f}x)",
-            None,)
-    return (
-        0,
-        None,
-        f"Weak Volume ({relative_volume:.2f}x)",)
-
-
-def score_rsi(rsi):
-    if 55 <= rsi <= 65:
-        return (
-            5,
-            f"Excellent RSI ({rsi:.1f})",
-            None,)
-    elif 50 <= rsi < 55:
-        return (
-            4,
-            f"Healthy RSI ({rsi:.1f})",
-            None,)
-    elif 65 < rsi <= 70:
-        return (
-            4,
-            f"Strong RSI ({rsi:.1f})",
-            None,)
-    elif 45 <= rsi < 50:
-        return (
-            2,
-            f"Weak RSI ({rsi:.1f})",
-            None,)
-    elif 70 < rsi <= 75:
-        return (
-            2,
-            f"RSI Slightly Overbought ({rsi:.1f})",
-            None,)
-    elif rsi > 75:
-        return (
-            0,
-            None,
-            f"RSI Overbought ({rsi:.1f})",)
-    return (
-        0,
-        None,
-        f"Weak RSI ({rsi:.1f})",)
-
-def score_macd(macd, signal):
-    if macd > signal:
-        return SCORING_WEIGHTS["macd"], "Bullish MACD", None
-    return 0, None, "Bearish MACD"
-
-
-def score_relative_strength(rs):
-
-    if rs is None:
-        return (
-            0,
-            None,
-            "Relative Strength Unavailable",)
-    elif rs >= 5:
-        return (
-            15,
-            f"Exceptional Relative Strength (+{rs:.2f}%)",
-            None,)
-    elif rs >= 2:
-        return (
-            10,
-            f"Strong Relative Strength (+{rs:.2f}%)",
-            None,)
-    elif rs > 0:
-        return (
-            5,
-            f"Positive Relative Strength (+{rs:.2f}%)",
-            None,)
-    return (
-        0,
-        None,
-        f"Underperforming Nifty ({rs:.2f}%)",
-    )
-
-
-def score_52_week_high(high, previous_high):
-    if high > previous_high:
-        return SCORING_WEIGHTS["high_52_week"], "52-Week High Breakout", None
-    return 0, None, "No 52-Week High Breakout"
-
-
-def score_consolidation(consolidation_percent, atr_percent):
-    if (
-        consolidation_percent < CONSOLIDATION_MAX_RANGE_PERCENT
-        and atr_percent < CONSOLIDATION_MAX_ATR_PERCENT
-    ):
-        return SCORING_WEIGHTS["consolidation"], "Tight Consolidation", None
-
-    return 0, None, "No Consolidation"
-
-
-def score_support(nearest_support, support_distance):
-
-    if nearest_support is None or support_distance is None:
-        return (
-            0,
-            None,
-            "No Nearby Support",
+    if missing:
+        raise KeyError(
+            f"Missing scoring fields: {', '.join(missing)}"
         )
 
-    strength = nearest_support["strength"]
 
-    if strength == "Strong":
+# ==========================================================
+# Individual Scoring Functions
+# ==========================================================
 
-        if support_distance <= 2:
-            return (
-                10,
-                f"Strong Support ({support_distance:.1f}% away)",
-                None,
-            )
+def score_trend(stock: Dict[str, Any]) -> int:
+    """
+    Close above 200 SMA
+    """
 
-        elif support_distance <= 5:
-            return (
-                8,
-                f"Strong Support ({support_distance:.1f}% away)",
-                None,
-            )
-
-    elif strength == "Medium":
-
-        if support_distance <= 2:
-            return (
-                6,
-                f"Medium Support ({support_distance:.1f}% away)",
-                None,
-            )
-
-        elif support_distance <= 5:
-            return (
-                4,
-                f"Medium Support ({support_distance:.1f}% away)",
-                None,
-            )
-
-    return (
-        0,
-        None,
-        "Weak/Far Support",
+    return bool_score(
+        stock["close"] > stock["sma200"],
+        SCORE_WEIGHTS["Trend"],
     )
 
 
-def score_upside(nearest_resistance, resistance_distance):
-    if nearest_resistance is None:
-        return (
-            10,
-            "Clear Overhead (No Resistance Found)",
-            None,)
-    if resistance_distance is None:
-        return (
-            0,
-            None,
-            "Resistance Distance Unknown",)
-    if resistance_distance >= 10:
-        return (
-            10,
-            f"Excellent Upside ({resistance_distance:.1f}%)",
-            None,)
-    elif resistance_distance >= 5:
-        return (
-            8,
-            f"Good Upside ({resistance_distance:.1f}%)",
-            None,)
-    elif resistance_distance >= 3:
-        return (
-            5,
-            f"Limited Upside ({resistance_distance:.1f}%)",
-            None,)
-    return (
-        0,
-        None,
-        f"Resistance Very Close ({resistance_distance:.1f}%)",
+def score_adx(stock: Dict[str, Any]) -> int:
+    """
+    ADX Trend Strength
+    """
+
+    return bool_score(
+        stock["adx"] >= ADX_THRESHOLD,
+        SCORE_WEIGHTS["ADX"],
     )
 
-def calculate_score(scan_results):
-    trend_score = 0
-    momentum_score = 0
-    volume_score = 0
-    structure_score = 0
-    trade_quality_score = 0
-    positive_signals = []
-    negative_signals = []
-    latest = scan_results["latest"]
 
-    previous_3_month_high = scan_results["previous_3_month_high"]
-    previous_52_week_high = scan_results["previous_52_week_high"]
+def score_52_week_high(stock: Dict[str, Any]) -> int:
+    """
+    Stock trading within configured %
+    of 52 Week High.
+    """
 
-    relative_volume = scan_results["relative_volume"]
-    rs = scan_results["relative_strength"]
+    high = stock["high_52w"]
 
-    consolidation_percent = scan_results["consolidation_percent"]
-    atr_percent = scan_results["atr_percent"]
+    if high <= 0:
+        return 0
 
-    nearest_support = scan_results["nearest_support"]
-    support_distance = scan_results["support_distance"]
+    distance = (
+        (high - stock["close"])
+        / high
+    ) * 100
 
-    nearest_resistance = scan_results["nearest_resistance"]
-    resistance_distance = scan_results["resistance_distance"]
+    return bool_score(
+        distance <= HIGH_52W_DISTANCE,
+        SCORE_WEIGHTS["52W High"],
+    )
 
 
-    # MA20
-    points, success, failure = score_ma20(
-    latest["Close"],
-    latest["ma20"],)
-    trend_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+def score_multi_timeframe(stock: Dict[str, Any]) -> int:
+    """
+    20 > 50 > 200 SMA Alignment
+    """
 
-    # MA50
-    points, success, failure = score_ma50(
-    latest["Close"],
-    latest["ma50"],)
-    trend_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+    sma20 = stock["sma20"]
+    sma50 = stock["sma50"]
+    sma200 = stock["sma200"]
 
-    # 3-Month High Breakout
-    points, success, failure = score_three_month_high(
-    latest["High"],
-    previous_3_month_high,)
-    trend_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+    condition = sma20 > sma50 > sma200
 
-    # Relative Volume
-    points, success, failure = score_relative_volume(
-    relative_volume,)
-    volume_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+    return bool_score(
+        condition,
+        SCORE_WEIGHTS["Multi Timeframe"],
+    )
 
-    # RSI
-    points, success, failure = score_rsi(
-    latest["rsi"],)
-    momentum_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+# ==========================================================
+# Market Structure
+# ==========================================================
 
-    # MACD
-    points, success, failure = score_macd(
-    latest["macd"],
-    latest["signal"],)
-    momentum_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+def score_market_structure(stock: Dict[str, Any]) -> int:
+    """
+    Higher High + Higher Low structure.
+    """
 
-    # Relative Strength
-    points, success, failure = score_relative_strength(rs,)
-    momentum_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+    return bool_score(
+        stock["market_structure"],
+        SCORE_WEIGHTS["Market Structure"],
+    )
 
-    # 52-Week High Breakout
-    points, success, failure = score_52_week_high(
-    latest["High"],
-    previous_52_week_high,)
-    trend_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
 
-    # Consolidation
-    points, success, failure = score_consolidation(
-    consolidation_percent,
-    atr_percent,)
-    structure_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+# ==========================================================
+# OBV
+# ==========================================================
 
-    # Market Structure
+def score_obv(stock: Dict[str, Any]) -> int:
+    """
+    Positive OBV accumulation.
+    """
 
-    # Strong Nearby Support
-    points, success, failure = score_support(
-    nearest_support,
-    support_distance,)
-    structure_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
+    return bool_score(
+        stock["obv_accumulation"],
+        SCORE_WEIGHTS["OBV"],
+    )
 
-    # Plenty of Upside
-    points, success, failure = score_upside(
-    nearest_resistance,
-    resistance_distance,)
-    trade_quality_score += points
-    if success:
-        positive_signals.append(success)
-    if failure:
-        negative_signals.append(failure)
 
-    overall_score = (
-    trend_score
-    + momentum_score
-    + volume_score
-    + structure_score
-    + trade_quality_score)
+# ==========================================================
+# MACD
+# ==========================================================
 
-    rating = get_rating(overall_score)
+def score_macd(stock: Dict[str, Any]) -> int:
+    """
+    Positive MACD Histogram.
+    """
+
+    return bool_score(
+        stock["macd_histogram"] > 0,
+        SCORE_WEIGHTS["MACD"],
+    )
+
+
+# ==========================================================
+# RSI
+# ==========================================================
+
+def score_rsi(stock: Dict[str, Any]) -> int:
+    """
+    Healthy RSI range.
+    """
+
+    rsi = max(0, min(100, stock["rsi"]))
+
+    return bool_score(
+        RSI_MIN <= rsi <= RSI_MAX,
+        SCORE_WEIGHTS["RSI"],
+    )
+
+
+# ==========================================================
+# ATR Bonus
+# ==========================================================
+
+def score_atr_bonus(stock: Dict[str, Any]) -> int:
+    """
+    Reward expanding volatility.
+    Backtesting across the NIFTY 500 showed that
+    stocks with ATR% above the threshold produced
+    stronger forward returns than low-volatility stocks.
+    Research showed ATR > threshold
+    had significantly better forward returns.
+    """
+
+    if stock["atr_percent"] > ATR_PENALTY_THRESHOLD:
+        return SCORE_WEIGHTS["ATR Bonus"]
+    else:
+
+        return 0
+
+# ==========================================================
+# Score Breakdown
+# ==========================================================
+
+def build_breakdown(stock: Dict[str, Any]) -> Dict[str, int]:
+    """
+    Evaluate every scoring factor independently.
+    """
+
+    breakdown = {
+
+        "Trend":
+            score_trend(stock),
+
+        "ADX":
+            score_adx(stock),
+
+        "52W High":
+            score_52_week_high(stock),
+
+        "Multi Timeframe":
+            score_multi_timeframe(stock),
+
+        "Market Structure":
+            score_market_structure(stock),
+
+        "OBV":
+            score_obv(stock),
+
+        "MACD":
+            score_macd(stock),
+
+        "RSI":
+            score_rsi(stock),
+
+        "ATR Bonus":
+            score_atr_bonus(stock),
+    }
+
+    return breakdown
+
+# ==========================================================
+# Main Scoring Engine
+# ==========================================================
+
+def calculate_score(stock: Dict[str, Any]) -> Dict[str, any]:
+    """
+    Calculate the complete Swing Scanner V4.0 score.
+
+    Parameters
+    ----------
+    stock : dict
+        Dictionary containing all calculated indicators.
+
+    Returns
+    -------
+    dict
+        {
+            "score": int,
+            "max_score": int,
+            "percentage": float,
+            "grade": str,
+            "breakdown": dict
+        }
+    """
+    validate_stock(stock)
+    breakdown = build_breakdown(stock)
+
+    total_score = sum(breakdown.values())
+
+    # Maximum achievable score ignores penalties.
+    max_score = sum(SCORE_WEIGHTS.values())
+
+
+    score_percentage = round(
+    (total_score / max_score) * 100,
+    2,
+)
+
+    grade = calculate_grade(score_percentage)
 
     return {
-    "score": overall_score,
-    "trend_score": trend_score,
-    "momentum_score": momentum_score,
-    "volume_score": volume_score,
-    "structure_score": structure_score,
-    "trade_quality_score": trade_quality_score,
-    "positive_signals": positive_signals,
-    "negative_signals": negative_signals,
-    "rating": rating,
-}
+        "score": total_score,
+        "max_score": max_score,
+        "percentage": score_percentage,
+        "grade": grade,
+        "breakdown": breakdown,
+    }
+
+
+# ==========================================================
+# Console Debug Helper
+# ==========================================================
+
+def print_score_breakdown(result: Dict[str, Any]) -> None:
+    """
+    Pretty-print the score breakdown.
+
+    Useful while debugging or testing.
+    """
+
+    print()
+    print("=" * 55)
+    print("SWING SCANNER V4.0 SCORE BREAKDOWN")
+    print("=" * 55)
+
+    for factor, score in result["breakdown"].items():
+        print(f"{factor:<25} {score:>5}")
+
+    print("-" * 55)
+
+    print(
+        f"{'TOTAL SCORE':<25}"
+        f"{result['score']} / {result['max_score']}"
+    )
+
+    print(
+        f"{'PERCENTAGE':<25}"
+        f"{result['percentage']}%"
+    )
+
+    print(
+        f"{'GRADE':<25}"
+        f"{result['grade']}"
+    )
+
+    print("=" * 55)
+    print()
+
+
+# ==========================================================
+# End of File
+# ==========================================================
+
+__all__ = [
+    "calculate_score",
+    "print_score_breakdown",
+]

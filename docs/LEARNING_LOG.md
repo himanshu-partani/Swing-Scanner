@@ -468,17 +468,200 @@ The transition from Version 1 to Version 3.2 reflects a shift from learning synt
 
 # Current Status
 
-**Current Version:** 3.2
+# 🚀 Version 4.0 — Quantitative Scoring Engine
 
-Current Focus:
+## Goal
 
-* Stable architecture
-* Maintainable code
-* Professional documentation
-* Future scalability
+Transform Swing Scanner from a feature-rich technical analysis tool into a production-ready quantitative stock ranking system.
 
-The foundation has been established for future versions to focus on expanding functionality without sacrificing code quality.
+Version 4.0 focused on improving the quality of stock selection by redesigning the scoring engine using empirical research, stronger trend filters, and a more objective ranking methodology.
 
 ---
 
-*"The project began as an exercise in learning Python. It has become an exercise in learning how to build software."*
+## Concepts Learned
+
+### Quantitative Scoring
+
+- Designing weighted scoring systems
+- Prioritizing high-impact technical factors
+- Converting technical analysis into objective numerical rankings
+- Building explainable decision models
+
+---
+
+### Trend Analysis
+
+- Long-term trend confirmation using SMA200
+- Multi-Timeframe Trend Alignment
+- Importance of trading in the direction of the primary trend
+
+---
+
+### Trend Strength
+
+Implemented ADX (Average Directional Index) to measure the strength of trends rather than relying solely on price direction.
+
+Learned the difference between:
+
+- Trend Direction
+- Trend Strength
+
+---
+
+### Volume Analysis
+
+Implemented On Balance Volume (OBV) to identify institutional accumulation and distribution.
+
+Learned how volume often confirms or contradicts price movement.
+
+---
+
+### Quantitative Ranking
+
+Instead of classifying stocks using fixed categories, every stock now receives:
+
+- Weighted Numerical Score
+- Letter Grade
+- Relative Market Ranking
+
+This allows direct comparison between hundreds of stocks.
+
+---
+
+### Large-Scale Screening
+
+Successfully scaled the scanner to evaluate the complete NIFTY 500 universe efficiently using batch downloads and modular analysis.
+
+---
+
+## Major Features Added
+
+- SMA200 Trend Analysis
+- Multi-Timeframe Trend Alignment
+- ADX Trend Strength
+- OBV Integration
+- Redesigned Weighted Scoring Engine
+- Letter Grade System
+- Improved Ranking Engine
+- Enhanced Market Summary
+- Production-Ready Release
+
+---
+
+## Biggest Lessons
+
+### Not Every Indicator Deserves Equal Weight
+
+Some indicators contribute far more to identifying quality setups than others.
+
+Learning how to prioritize meaningful signals was more valuable than simply adding more indicators.
+
+---
+
+### Simplicity Often Outperforms Complexity
+
+A small number of high-quality factors can outperform a large collection of loosely related indicators.
+
+---
+
+### Software Engineering Is Iterative
+
+Version 4.0 was built primarily through refinement rather than adding entirely new functionality.
+
+Improving existing systems often provides greater value than continuously introducing new features.
+
+---
+
+### Data Should Drive Decisions
+
+Technical analysis becomes more useful when transformed into objective, repeatable scoring rather than subjective interpretation.
+
+---
+
+# Skills Developed
+
+## Python
+
+- Intermediate Python
+- Modular programming
+- Object-oriented design principles
+- File handling
+- Error handling
+- Project organization
+
+---
+
+## Data Analysis
+
+- Pandas
+- NumPy
+- Time-series analysis
+- Financial datasets
+- Batch processing
+
+---
+
+## Quantitative Trading
+
+- Trend analysis
+- Momentum analysis
+- Volume analysis
+- Market structure
+- Factor-based scoring
+- Stock ranking methodologies
+
+---
+
+## Software Engineering
+
+- Modular architecture
+- Separation of concerns
+- Configuration management
+- Refactoring
+- Maintainability
+- Documentation
+- Release management
+- Scalability
+
+---
+
+## Git & GitHub
+
+- Version control
+- Branching
+- Release management
+- Documentation maintenance
+- Project versioning
+
+---
+
+# Reflection
+
+The most valuable outcome of this project is not the scanner itself.
+
+It is the experience gained by designing, implementing, testing, refactoring, and maintaining a real software project over multiple versions.
+
+Each release introduced new technical concepts while improving the architecture, maintainability, and overall quality of the application.
+
+The journey from Version 1.0 to Version 4.0 reflects a transition from learning Python syntax to understanding software engineering, quantitative analysis, and building production-ready software.
+
+---
+
+# Current Status
+
+**Current Version:** **4.0**
+
+Current Focus:
+
+- Production-ready stock scanner
+- Clean modular architecture
+- Quantitative scoring engine
+- Reliable market ranking
+- Maintainable codebase
+- Preparing for quantitative research tools
+
+The scanner now provides a stable foundation for future versions to focus on historical research, strategy validation, and backtesting without requiring major architectural changes.
+
+---
+
+*"The project began as an exercise in learning Python. Today, it represents a journey into software engineering, quantitative trading, and building professional-grade applications—one version at a time."*

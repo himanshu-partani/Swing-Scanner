@@ -1,368 +1,330 @@
 # 🛣️ Swing Scanner Roadmap
 
-> **Future development roadmap following the release of Version 3.2**
+> **Long-term development roadmap for Swing Scanner following the release of Version 4.0**
 
 ---
 
-# Roadmap Philosophy
+# Vision
 
-Version **3.2** established the architectural foundation of Swing Scanner.
+Swing Scanner has evolved from a Python learning project into a modular quantitative stock analysis platform.
 
-Future versions will focus on expanding functionality while preserving the clean, modular architecture introduced in this release.
+Version **4.0** establishes a production-ready foundation. Future development will focus on transforming the project into a complete quantitative research and strategy development platform while preserving the clean architecture built over previous releases.
 
-Development priorities are guided by three principles:
+Development will continue to follow three guiding principles:
 
-* Build practical trading tools.
-* Maintain clean software architecture.
-* Learn professional software engineering through real-world development.
+- Build practical trading tools.
+- Maintain clean software architecture.
+- Learn professional software engineering through real-world development.
 
 ---
 
-# Current Version
+# Current Release
 
-## ✅ Version 3.2
+## ✅ Version 4.0 — Production Scanner
 
-Status:
-
-**Released**
+**Status:** Released
 
 Major achievements:
 
-* Modular architecture
-* Centralized configuration
-* Batch download engine
-* Report object architecture
-* Decision engine
-* Ranking engine
-* Multiple scan modes
-* Multiple output modes
-* Professional documentation
+- Modular architecture
+- Batch download engine
+- Centralized configuration
+- Professional reporting
+- Quantitative scoring engine
+- ADX integration
+- OBV integration
+- SMA200 trend analysis
+- Multi-Timeframe Trend Alignment
+- Letter grade system
+- Complete NIFTY 500 scanning
 
-This release serves as the long-term foundation for future development.
+Version 4.0 represents the first production-ready release of Swing Scanner.
 
 ---
 
-# Version 3.3 — Reporting & Usability
+# Version 5.0 — Quant Research Platform
 
 ## Goal
 
-Improve usability and make scan results easier to analyze outside the terminal.
-
-### Planned Features
-
-### CSV Report Export
-
-Export scan results into CSV files containing:
-
-* Ranking
-* Score
-* Rating
-* Category scores
-* Trade metrics
-* Key signals
+Transform Swing Scanner from a stock scanner into a complete research platform capable of validating trading strategies using historical market data.
 
 ---
 
-### Configurable Top Results
+## Historical Backtesting Engine
 
-Allow users to configure:
-
-* Top 5
-* Top 10
-* Top 20
-* Top 50
-
-without modifying application logic.
+- Historical scanner
+- Trade simulation
+- Configurable holding periods
+- Entry and exit strategies
+- ATR-based stop loss
+- MA-based exits
 
 ---
 
-### Enhanced Console Output
+## Portfolio Simulator
 
-Improve readability by:
-
-* Better spacing
-* Cleaner section formatting
-* Optional colorized output
-* Improved summary layout
+- Portfolio equity curve
+- Position sizing
+- Capital management
+- Multiple simultaneous trades
 
 ---
 
-### Additional Configuration Options
+## Performance Analytics
 
-Expand `config.py` to support more user-configurable behavior without requiring code changes.
+Generate professional trading statistics including:
+
+- CAGR
+- Win Rate
+- Average Return
+- Median Return
+- Profit Factor
+- Sharpe Ratio
+- Sortino Ratio
+- Maximum Drawdown
+- Expectancy
 
 ---
 
-# Version 3.4 — Portfolio Tools
+## Strategy Validation
+
+Evaluate the effectiveness of:
+
+- Individual indicators
+- Scoring factors
+- Entry conditions
+- Exit conditions
+- Holding periods
+
+---
+
+## Research Reports
+
+Automatically generate:
+
+- Equity curves
+- Monthly returns
+- Drawdown charts
+- Trade distribution
+- Grade performance
+- Performance summaries
+
+---
+
+# Version 6.0 — Machine Learning Engine
 
 ## Goal
 
-Expand beyond stock scanning into portfolio management.
-
-### Planned Features
-
-* Portfolio Scanner
-* Portfolio Watchlists
-* Portfolio Performance Summary
-* Holdings Analysis
-* Sector Allocation
-* Portfolio Risk Summary
+Introduce data-driven scoring models while preserving explainability.
 
 ---
 
-# Version 4.0 — Visualization
+## Continuous Feature Engineering
+
+Replace binary indicator checks with continuous numerical features.
+
+Examples:
+
+- Distance above SMA200
+- ADX value
+- RSI value
+- OBV slope
+- ATR percentage
+- Distance from 52-week high
+
+---
+
+## Statistical Models
+
+Support multiple predictive models:
+
+- Linear Regression
+- Ridge Regression
+- Lasso Regression
+- Random Forest
+- Gradient Boosting
+- XGBoost
+
+---
+
+## Walk-Forward Optimization
+
+- Rolling retraining
+- Out-of-sample testing
+- Cross-validation
+- Feature importance analysis
+
+---
+
+## Model Comparison
+
+Compare:
+
+- Rule-based scoring
+- Quantitative scoring
+- Machine learning models
+
+using identical historical datasets.
+
+---
+
+# Version 7.0 — Visualization Platform
 
 ## Goal
 
-Introduce graphical analysis.
+Create an interactive interface for research and analysis.
 
-### Planned Features
+Planned features:
 
-### Interactive Charts
-
-* Candlestick charts
-* Moving averages
-* RSI
-* MACD
-* Support & resistance zones
-
----
-
-### Streamlit Dashboard
-
-Interactive interface featuring:
-
-* Stock search
-* Scanner controls
-* Rankings
-* Charts
-* Configuration panel
-* Summary dashboard
-
----
-
-### Historical Trade Visualization
-
-Display:
-
-* Entry
-* Stop Loss
-* Target
-* Support
-* Resistance
-
-directly on price charts.
-
----
-
-# Version 4.5 — Automation
-
-## Goal
-
-Reduce manual work.
-
-### Planned Features
-
-* Scheduled scans
-* Automatic CSV generation
-* Daily scan summaries
-* Email reports
-* Telegram notifications
-* Watchlist monitoring
-
----
-
-# Version 5.0 — Intelligence
-
-## Goal
-
-Introduce intelligent decision support.
-
-### Planned Features
-
-### AI Trade Explanations
-
-Generate natural-language explanations describing:
-
-* Why a stock scored highly
-* Strengths
-* Weaknesses
-* Risk factors
-
----
-
-### Pattern Recognition
-
-Detect patterns such as:
-
-* Flags
-* Pennants
-* Triangles
-* Double Tops
-* Double Bottoms
-
----
-
-### Confidence Analysis
-
-Estimate confidence based on agreement between multiple technical signals.
-
----
-
-# Version 5.5 — Strategy Development
-
-## Goal
-
-Evaluate trading strategies objectively.
-
-### Planned Features
-
-* Historical backtesting
-* Performance metrics
-* Win rate analysis
-* Drawdown analysis
-* Strategy comparison
-* Parameter optimization
-
----
-
-# Version 6.0 — Professional Platform
-
-## Goal
-
-Transform Swing Scanner into a complete trading toolkit.
-
-### Planned Features
-
-### Broker Integration
-
-* Order placement
-* Position tracking
-* Live portfolio updates
-
----
-
-### Database Support
-
-Replace CSV files with a structured database.
+- Interactive candlestick charts
+- Technical indicator overlays
+- Strategy visualization
+- Research dashboards
+- Scanner controls
+- Market summary dashboard
 
 Potential technologies:
 
-* SQLite
-* PostgreSQL
+- Streamlit
+- Plotly
+- Dash
 
 ---
 
-### User Profiles
+# Version 8.0 — Automation Platform
 
-Support multiple users with independent:
+## Goal
 
-* Watchlists
-* Configurations
-* Portfolios
+Automate routine trading research.
+
+Planned features:
+
+- Scheduled scans
+- Automatic reports
+- Telegram notifications
+- Email summaries
+- Watchlist monitoring
+- Daily market reports
 
 ---
 
-### Cloud Deployment
+# Version 9.0 — Professional Platform
 
-Deploy the application for remote access and continuous scanning.
+## Goal
 
-Potential platforms:
+Expand Swing Scanner into a complete trading toolkit.
 
-* Docker
-* Railway
-* Render
-* AWS
-* Azure
+Potential features:
+
+- Portfolio management
+- Broker API integration
+- Order management
+- Position tracking
+- Database support
+- Multi-user configuration
+- Cloud deployment
+
+Potential technologies:
+
+- SQLite
+- PostgreSQL
+- Docker
+- Railway
+- Render
+- AWS
 
 ---
 
 # Long-Term Vision
 
-The long-term objective is to evolve Swing Scanner from a command-line scanner into a comprehensive swing trading platform.
+The long-term objective is to transform Swing Scanner into a comprehensive quantitative trading platform capable of:
 
-The platform should eventually provide:
+- Market Scanning
+- Strategy Research
+- Historical Backtesting
+- Portfolio Simulation
+- Performance Analytics
+- Machine Learning Research
+- Interactive Visualization
+- Automated Market Monitoring
 
-* Market scanning
-* Portfolio analysis
-* Strategy testing
-* Visualization
-* Automation
-* AI-assisted insights
-* Professional reporting
-
-while continuing to follow clean software engineering practices.
+while continuing to follow professional software engineering practices.
 
 ---
 
 # Development Priorities
 
-Future work will continue to follow this order of importance:
+Every release will prioritize:
 
 1. Maintainability
 2. Code Quality
 3. Reliability
-4. Performance
-5. User Experience
-6. New Features
+4. Quantitative Accuracy
+5. Performance
+6. User Experience
+7. New Features
 
-Architecture will always take priority over feature count.
+Architecture and correctness will always take priority over feature count.
 
 ---
 
 # Guiding Principles
 
-Every new version should strive to:
+Every version should strive to:
 
-* Preserve modular architecture.
-* Avoid unnecessary complexity.
-* Minimize code duplication.
-* Improve readability.
-* Keep configuration centralized.
-* Expand functionality without compromising maintainability.
+- Preserve modular architecture
+- Minimize code duplication
+- Improve readability
+- Keep configuration centralized
+- Build reusable components
+- Validate ideas through data
+- Expand functionality without sacrificing maintainability
 
 ---
 
 # Success Metrics
 
-Future releases should aim to improve one or more of the following:
+Future releases should improve one or more of the following:
 
-* Scan performance
-* Code quality
-* User experience
-* Trading usefulness
-* Documentation
-* Software engineering practices
+- Strategy performance
+- Research capability
+- Code quality
+- Scalability
+- User experience
+- Documentation
+- Software engineering practices
 
-rather than simply increasing the number of features.
+Success is measured by both software quality and the ability to produce reliable quantitative research.
 
 ---
 
 # Roadmap Status
 
-| Version |   Status   |
-| ------- | :--------: |
-| 3.2     | ✅ Released |
-| 3.3     | 📋 Planned |
-| 3.4     | 📋 Planned |
-| 4.0     | 📋 Planned |
-| 4.5     |  🔮 Future |
-| 5.0     |  🔮 Future |
-| 5.5     |  🔮 Future |
-| 6.0     |  🔮 Vision |
+| Version | Status |
+|----------|:------:|
+| 1.0 | ✅ Completed |
+| 2.0 | ✅ Completed |
+| 3.0 | ✅ Completed |
+| 3.2 | ✅ Completed |
+| 4.0 | ✅ Released |
+| 5.0 | 🚧 Next Milestone |
+| 6.0 | 🔮 Planned |
+| 7.0 | 🔮 Future |
+| 8.0 | 🔮 Future |
+| 9.0 | 🌟 Vision |
 
 ---
 
 # Closing Note
 
-Version **3.2** marks the completion of the project's first major architectural milestone.
+Version **4.0** marks the completion of Swing Scanner's first major phase—a production-ready quantitative stock scanner.
 
-Future releases will build on this foundation by adding new capabilities while maintaining the same emphasis on clean design, modularity, and continuous learning.
+The next stage of the project focuses on validating strategies through rigorous historical research, followed by machine learning, visualization, and automation.
 
-The roadmap is intentionally ambitious. It serves as a guide rather than a strict schedule, allowing the project to evolve naturally while remaining focused on long-term quality.
+The roadmap is intentionally ambitious. It is designed to guide continuous learning while ensuring every new capability is built on a stable, maintainable software foundation.
 
 ---
 
-**Current Stable Release:** **Swing Scanner v3.2**
+**Current Stable Release:** **Swing Scanner v4.0.0**
 
-*"Build software that is easy to improve, and future features become much easier to add."*
+*"Build software that is easy to improve, and future possibilities become much easier to achieve."*

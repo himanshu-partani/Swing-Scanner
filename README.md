@@ -1,176 +1,163 @@
 # 🚀 Swing Scanner
 
-> **A Professional Python-Based Swing Trading Scanner for the Indian Stock Market**
+> **A Modular Quantitative Swing Trading Scanner for the Indian Stock Market**
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![Pandas](https://img.shields.io/badge/Pandas-Latest-green.svg)
 ![Yahoo Finance](https://img.shields.io/badge/Data-Yahoo%20Finance-orange.svg)
-![Version](https://img.shields.io/badge/Version-3.2-success.svg)
+![Version](https://img.shields.io/badge/Version-4.0-success.svg)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
 ---
 
 # Overview
 
-Swing Scanner is a modular Python application designed to identify high-quality swing trading opportunities in the Indian stock market using technical analysis, market structure, and a professional weighted scoring engine.
+Swing Scanner is a modular Python application that identifies high-quality swing trading opportunities in the Indian stock market using technical analysis, market structure, and a professional weighted scoring engine.
 
-The project started as a Python learning journey and has evolved into a structured software engineering project featuring clean architecture, reusable modules, centralized configuration, batch data processing, and an extensible scoring system.
+Originally started as a Python learning journey, the project has evolved into a structured software engineering application featuring clean architecture, reusable modules, centralized configuration, batch data processing, and a scalable analysis pipeline capable of scanning the complete NIFTY 500 universe.
 
-Version **3.2** represents the first major architectural milestone of the project.
+**Version 4.0** represents the first production-ready release of the scanner.
 
 ---
 
 # Features
 
-## Market Data
+## 📊 Market Data
 
-* Live market data from Yahoo Finance
-* Batch download engine
-* Watchlist scanning
-* Nifty 500 scanning
-* Automatic Nifty benchmark download
-
----
-
-## Technical Indicators
-
-* Moving Average 20
-* Moving Average 50
-* RSI
-* ATR
-* MACD
-* Relative Strength vs Nifty
-* Relative Volume
-* Previous 3-Month High
-* 52-Week High
-* Consolidation Detection
+- Live market data from Yahoo Finance
+- Batch download engine
+- Personal watchlist scanning
+- Complete NIFTY 500 scanning
+- Automatic NIFTY benchmark download
 
 ---
 
-## Market Structure Engine
+## 📈 Technical Analysis
 
-* Swing Point Detection
-* Support Zones
-* Resistance Zones
-* Zone Grouping
-* Zone Filtering
-* Zone Strength Classification
-* Nearest Support Detection
-* Nearest Resistance Detection
-* Distance Calculations
-
----
-
-## Trade Analysis
-
-* Risk
-* Reward
-* Risk : Reward Ratio
-* Upside Potential
+- SMA20
+- SMA50
+- SMA200
+- RSI
+- ATR
+- ADX (+DI / −DI)
+- MACD
+- OBV (On Balance Volume)
+- Relative Strength vs NIFTY
+- Relative Volume
+- Previous 3-Month High
+- 52-Week High Proximity
 
 ---
 
-## Professional Scoring Engine
+## 🏗 Market Structure Engine
 
-Weighted **100 Point** scoring system.
-
-Categories:
-
-* Trend
-* Momentum
-* Volume
-* Market Structure
-* Trade Quality
-
-Professional ratings:
-
-| Score    | Rating                  |
-| -------- | ----------------------- |
-| 90–100   | ⭐⭐⭐⭐⭐ Elite Swing Trade |
-| 75–89    | ⭐⭐⭐⭐☆ Strong Setup      |
-| 60–74    | ⭐⭐⭐☆☆ Watchlist         |
-| 40–59    | ⭐⭐☆☆☆ Average           |
-| Below 40 | ⭐☆☆☆☆ Avoid             |
+- Swing Point Detection
+- Support Zone Detection
+- Resistance Zone Detection
+- Zone Grouping
+- Zone Strength Classification
+- Nearest Support Detection
+- Nearest Resistance Detection
+- Distance Calculations
 
 ---
 
-# Version 3.2 Highlights
+## 🎯 Professional Scoring Engine
 
-## Modular Architecture
+The Version 4.0 scoring engine evaluates multiple independent technical factors to generate a weighted composite score.
 
-The scanner has been reorganized into specialized modules with clear responsibilities.
+### Current Scoring Factors
 
-## Centralized Configuration
+- Long-Term Trend
+- Multi-Timeframe Alignment
+- ADX Trend Strength
+- Market Structure
+- 52-Week High Proximity
+- OBV
+- MACD
+- RSI
+- ATR Bonus
 
-All configurable values are maintained inside a single configuration file.
+Every stock receives:
 
-## Batch Download Engine
+- Numerical Score
+- Percentage Score
+- Letter Grade
+- Market Ranking
 
-Downloads market data for multiple stocks simultaneously for significantly improved performance.
+### Grade System
 
-## Report Object Architecture
-
-Analysis is converted into structured report objects before presentation.
-
-## Decision Engine
-
-The scoring engine converts raw technical data into actionable trading decisions.
-
-## Ranking Engine
-
-All scanned stocks are ranked from highest to lowest score.
-
-## Multiple Scan Modes
-
-```python
-SCAN_MODE = "watchlist"
-```
-
-Scans stocks listed in:
-
-```
-data/stocks.csv
-```
-
-or
-
-```python
-SCAN_MODE = "nifty500"
-```
-
-Scans the complete Nifty 500 universe.
+| Grade | Score |
+|--------|------:|
+| A+ | 90 – 100 |
+| A | 75 – 89 |
+| B | 60 – 74 |
+| C | 40 – 59 |
+| D | Below 40 |
 
 ---
 
-## Multiple Output Modes
+# Reporting System
 
-### Full Mode
+Two reporting modes are available.
 
-```python
-OUTPUT_MODE = "full"
-```
+## Full Mode
 
-Displays detailed analysis for every scanned stock.
+Displays detailed analysis for every scanned stock including:
 
-### Summary Mode
+- Technical indicators
+- Individual scoring factors
+- Market structure
+- Final score
+- Letter grade
 
-```python
-OUTPUT_MODE = "summary"
-```
+---
+
+## Summary Mode
 
 Displays:
 
-* Top Swing Opportunities
-* Market Summary
+- Top Swing Setups
+- Market Summary
+- Grade Distribution
 
-Designed for large scans such as Nifty 500.
+Designed for large scans such as the NIFTY 500.
+
+---
+
+# Example Output
+
+```text
+============================================================
+                      TOP SWING SETUPS
+============================================================
+
+Rank   Ticker              Score   Grade
+
+1      PNBHOUSING.NS       96      A+
+2      INDUSINDBK.NS       94      A+
+3      RAINBOW.NS          94      A+
+...
+
+============================================================
+                      MARKET SUMMARY
+============================================================
+
+Stocks Scanned : 500
+
+A+ : 13
+A  : 60
+B  : 89
+C  : 96
+D  : 242
+```
 
 ---
 
 # Project Structure
 
 ```text
-Swing Scanner
+Swing-Scanner
 │
 ├── config.py
 ├── data_loader.py
@@ -202,23 +189,28 @@ Swing Scanner
 # Architecture
 
 ```text
-                    config.py
-                         │
-                         ▼
-                data_loader.py
-                         │
-                         ▼
-                    scanner.py
-                         │
-     ┌──────────────┬──────────────┬──────────────┐
-     ▼              ▼              ▼
-indicators.py  market_structure.py scoring.py
-                         │
-                         ▼
-                    report.py
-                         │
-                         ▼
-                    ranking.py
+                 config.py
+                      │
+                      ▼
+              data_loader.py
+                      │
+                      ▼
+                indicators.py
+                      │
+                      ▼
+           market_structure.py
+                      │
+                      ▼
+                 scoring.py
+                      │
+                      ▼
+                 ranking.py
+                      │
+                      ▼
+                  report.py
+                      │
+                      ▼
+                 scanner.py
 ```
 
 ---
@@ -253,9 +245,9 @@ python scanner.py
 
 # Configuration
 
-All settings are centralized inside:
+All project settings are centralized inside:
 
-```
+```text
 config.py
 ```
 
@@ -266,13 +258,13 @@ SCAN_MODE = "watchlist"
 OUTPUT_MODE = "summary"
 ```
 
-Additional configuration includes:
+Additional configurable parameters include:
 
-* Indicator periods
-* Scoring weights
-* Download period
-* Consolidation thresholds
-* Zone grouping thresholds
+- Indicator periods
+- Scoring weights
+- Download settings
+- Market structure thresholds
+- Scanner options
 
 ---
 
@@ -282,19 +274,19 @@ Additional configuration includes:
 
 Scans stocks listed inside:
 
-```
+```text
 data/stocks.csv
 ```
 
-Best for personal watchlists.
+Ideal for personal watchlists.
 
 ---
 
-## Nifty 500 Mode
+## NIFTY 500 Mode
 
-Scans the entire Nifty 500 universe.
+Scans the complete NIFTY 500 universe.
 
-Before the first scan, prepare the ticker list using:
+Prepare the ticker list using:
 
 ```bash
 python tools/prepare_nifty500.py
@@ -302,105 +294,78 @@ python tools/prepare_nifty500.py
 
 ---
 
-# Output
-
-## Full Report
-
-Displays detailed analysis including:
-
-* Technical indicators
-* Category scores
-* Trade metrics
-* Positive signals
-* Weaknesses
-* Overall rating
-
----
-
-## Summary Report
-
-Displays:
-
-* Top ranked opportunities
-* Market statistics
-* Rating distribution
-
-Ideal for scanning hundreds of stocks.
-
----
-
 # Software Design
 
 Swing Scanner follows a modular architecture where every module has a single responsibility.
 
-| Module              | Responsibility                     |
-| ------------------- | ---------------------------------- |
-| config.py           | Central configuration              |
-| data_loader.py      | Data loading and downloads         |
-| indicators.py       | Technical indicators               |
-| market_structure.py | Support & resistance analysis      |
-| scoring.py          | Decision engine                    |
-| ranking.py          | Ranking scanned stocks             |
-| report.py           | Report generation and presentation |
-| scanner.py          | Application orchestration          |
+| Module | Responsibility |
+|---------|----------------|
+| config.py | Central configuration |
+| data_loader.py | Market data downloads |
+| indicators.py | Technical indicators |
+| market_structure.py | Support & Resistance analysis |
+| scoring.py | Weighted scoring engine |
+| ranking.py | Stock ranking |
+| report.py | Report generation |
+| scanner.py | Application orchestration |
 
 ---
 
 # Technologies
 
-* Python
-* Pandas
-* NumPy
-* yfinance
+- Python
+- Pandas
+- NumPy
+- yfinance
 
 ---
 
 # Development Philosophy
 
-The goal of this project is not simply to calculate indicators.
+The objective of Swing Scanner extends beyond calculating technical indicators.
 
-The focus is on building a maintainable, scalable, and well-engineered trading application while learning professional Python software development practices.
+The project focuses on building a maintainable, scalable, and well-engineered trading application while learning professional software engineering practices.
 
-Every version prioritizes:
+Core principles include:
 
-* Clean architecture
-* Readable code
-* Modular design
-* Reusability
-* Incremental improvement
-* Practical software engineering
+- Clean Architecture
+- Modular Design
+- Code Reusability
+- Incremental Development
+- Practical Software Engineering
+- Continuous Improvement
 
 ---
 
 # Current Status
 
-**Version:** 3.2
+**Version:** **4.0**
 
 Status:
 
-✅ Stable
-
-✅ Feature Complete
-
-✅ Modular Architecture
-
-✅ Release Ready
+- ✅ Production Ready
+- ✅ Successfully Tested on the Complete NIFTY 500 Universe
+- ✅ Modular Architecture
+- ✅ Professional Scoring Engine
+- ✅ Ranking System
+- ✅ Reporting System
 
 ---
 
 # Roadmap
 
-Planned future improvements include:
+## Version 5.0 — Quant Research Platform
 
-* CSV report export
-* Portfolio scanner
-* Interactive charts
-* Streamlit dashboard
-* Telegram notifications
-* AI-assisted trade explanations
-* Backtesting engine
-* Strategy optimization
-* Broker API integration
+Planned features:
+
+- Historical Backtesting Engine
+- Walk-Forward Testing
+- Portfolio Simulator
+- Performance Analytics
+- Strategy Comparison
+- Weight Optimization
+- Research Dashboard
+- Trade Journal
 
 See **docs/ROADMAP.md** for the complete roadmap.
 
@@ -408,11 +373,19 @@ See **docs/ROADMAP.md** for the complete roadmap.
 
 # Learning Journey
 
-This repository documents the evolution from learning basic Python to building a modular financial analysis application.
+This repository documents the evolution from learning basic Python to building a modular quantitative trading application.
 
-The project emphasizes learning through real-world software development, including architecture, refactoring, testing, and documentation.
+The project demonstrates practical software engineering through real-world development, including architecture, refactoring, testing, debugging, documentation, and quantitative analysis.
 
 See **docs/LEARNING_LOG.md** for the complete development history.
+
+---
+
+# Disclaimer
+
+This project is intended for educational and research purposes only.
+
+It is **not** financial advice. Always perform your own research before making investment decisions.
 
 ---
 
@@ -428,12 +401,12 @@ This project is licensed under the MIT License.
 
 Computer Science Engineering Student
 
-Python Developer | Software Engineering Enthusiast | Swing Trading Learner
+Python Developer • Software Engineering Enthusiast • Quantitative Trading Learner
 
 ---
 
 # Version
 
-**Swing Scanner v3.2**
+**Swing Scanner v4.0.0**
 
-*"From learning Python to building professional software—one version at a time."*
+*"From learning Python fundamentals to building a modular quantitative trading platform—one version at a time."*
